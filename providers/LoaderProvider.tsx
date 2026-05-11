@@ -12,6 +12,7 @@ const LoaderContext = createContext<LoaderContextType>({ showLoader: false });
 
 export function LoaderProvider({ children, name }: { children: React.ReactNode; name: string }) {
   const [showLoader, setShowLoader] = useState(false);
+  const [showApp, setShowApp] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const playSound = useClickSound();
 
@@ -22,6 +23,8 @@ export function LoaderProvider({ children, name }: { children: React.ReactNode; 
     if (!hasVisited) {
       setShowLoader(true);
       localStorage.setItem('portfolio_visited', 'true');
+    } else {
+      setShowApp(true);
     }
     
     setIsLoading(false);
@@ -45,11 +48,14 @@ export function LoaderProvider({ children, name }: { children: React.ReactNode; 
 
   return (
     <LoaderContext.Provider value={{ showLoader }}>
-      {showLoader ? (
-        <InitialLoader name={name} onComplete={() => setShowLoader(false)} />
-      ) : (
-        children
+      {showLoader && (
+        <InitialLoader
+          name={name}
+          onExitStart={() => setShowApp(true)}
+          onComplete={() => setShowLoader(false)}
+        />
       )}
+      {showApp && children}
     </LoaderContext.Provider>
   );
 }

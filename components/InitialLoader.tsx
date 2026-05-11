@@ -4,11 +4,12 @@ import { useEffect, useState } from 'react';
 
 interface InitialLoaderProps {
   name: string;
+  onExitStart?: () => void;
   onComplete: () => void;
 }
 
-export default function InitialLoader({ name, onComplete }: InitialLoaderProps) {
-  const [displayedName, setDisplayedName] = useState('');
+export default function InitialLoader({ name, onExitStart, onComplete }: InitialLoaderProps) {
+  const [visibleCharacters, setVisibleCharacters] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
@@ -17,16 +18,17 @@ export default function InitialLoader({ name, onComplete }: InitialLoaderProps) 
 
     const typeCharacter = () => {
       if (index < name.length) {
-        setDisplayedName(name.slice(0, index + 1));
+        setVisibleCharacters(index + 1);
         index++;
-        timeout = setTimeout(typeCharacter, 300);
+        timeout = setTimeout(typeCharacter, 280);
       } else {
-        timeout = setTimeout(() => {
-          setIsExiting(true);
-        }, 650);
+        setIsExiting(true);
+        onExitStart?.();
       }
     };
 
+    setVisibleCharacters(0);
+    setIsExiting(false);
     typeCharacter();
 
     return () => clearTimeout(timeout);
@@ -51,7 +53,15 @@ export default function InitialLoader({ name, onComplete }: InitialLoaderProps) 
     >
       <div id="initial-loader-shell">
         <div id="initial-loader-stage" className="notranslate" lang="en-US" translate="no">
-          {displayedName}
+          {Array.from(name).map((character, index) => (
+            <span
+              key={`${character}-${index}`}
+              className="initial-loader-letter"
+              aria-hidden={index >= visibleCharacters}
+            >
+              {index < visibleCharacters ? character : '\u00A0'}
+            </span>
+          ))}
         </div>
       </div>
     </div>
