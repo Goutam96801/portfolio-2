@@ -11,7 +11,7 @@ import { Photos } from "./photos";
 const MIN_ZOOM = 0.4;
 const MAX_ZOOM = 2;
 const ZOOM_STEP = 0.1;
-const DEFAULT_ZOOM = 0.8;
+const DEFAULT_ZOOM = 0.65;
 
 const CANVAS_WIDTH = 2300;
 const CANVAS_HEIGHT = 900;

@@ -1,7 +1,7 @@
 
 const HeroSection = () => {
     return (
-        <div className="py-8 md:py-16 lg:py-24 text-center relative px-4 sm:px-6">
+        <div className="py-8 md:py-16 lg:py-20 text-center relative px-4 sm:px-6">
             <div className="max-w-6xl mx-auto w-full text-center relative">
                 <div className="select-none relative z-20 mb-8 lg:mb-12 transition-all duration-700 opacity-100 translate-y-0">
                     <h1 className="text-center leading-[1.1]">

@@ -322,3 +322,28 @@ body {
     transform: translateX(-1px);
   }
 }
+
+
+.modern-card {
+    border-radius: 0;
+    box-shadow: none;
+    will-change: transform;
+}
+.modern-card {
+    position: relative;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    border-width: 2px;
+    --tw-border-opacity: 1;
+    border-color: rgb(0 0 0 / var(--tw-border-opacity, 1));
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+    padding: 1.5rem;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(0, 0, .2, 1);
+    animation-duration: .2s;
+    animation-timing-function: cubic-bezier(0, 0, .2, 1);
+}
