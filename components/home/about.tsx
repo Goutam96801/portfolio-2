@@ -125,7 +125,7 @@ export const AboutMe = () => {
                         <div className="transform rotate-3 hover:rotate-6 hover:scale-105 transition-all duration-500 ease-out cursor-pointer group relative">
                             <div className="bg-white p-3 shadow-lg hover:shadow-2xl border border-gray-200 w-48 lg:w-56 transition-shadow duration-300">
                                 <Image
-                                    src="/images/profile1.jpeg"
+                                    src="/gallary/profile1.jpeg"
                                     alt="Goutam - Software Developer"
                                     className="w-full h-32 lg:h-40 object-cover bg-gray-100 transition-all duration-300 group-hover:brightness-110"
                                     loading="eager"
@@ -178,7 +178,7 @@ export const AboutMe = () => {
                     <div className="flex justify-center">
                         <div className="transform rotate-2 hover:rotate-4 transition-transform duration-300 cursor-pointer group relative"><div className="bg-white p-3 shadow-lg border border-gray-200 w-48">
                             <Image
-                                src="/images/profile1.jpeg"
+                                src="/gallary/profile1.jpeg"
                                 alt="Goutam - Software Developer"
                                 className="w-full h-32 lg:h-40 object-cover bg-gray-100 transition-all duration-300 group-hover:brightness-110"
                                 loading="eager"

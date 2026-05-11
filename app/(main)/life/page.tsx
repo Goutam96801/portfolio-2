@@ -99,7 +99,7 @@ export default function Life() {
         >
           <div className="rotate-2 bg-white p-2.5 shadow-[0_2px_20px_rgba(0,0,0,0.08)] transition-transform duration-500 hover:rotate-0">
             <Image
-              src="/images/profile.jpeg"
+              src="/gallary/profile.jpeg"
               alt="Goutam Choudhary"
               width={208}
               height={256}
