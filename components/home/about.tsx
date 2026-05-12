@@ -183,8 +183,8 @@ export const AboutMe = () => {
                                 className="w-full h-32 lg:h-40 object-cover bg-gray-100 transition-all duration-300 group-hover:brightness-110"
                                 loading="eager"
                                 data-critical="true"
-                                width={32}
-                                height={32}
+                                width={1000}
+                                height={1000}
                             />
                             <div className="mt-2 text-center">
                                 <p className="font-mono text-xs text-gray-600">That's me! 📸</p>

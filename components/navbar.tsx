@@ -11,14 +11,25 @@ const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
 
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const mobileMenuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
+      const target = event.target as Node;
+
       if (
         menuRef.current &&
-        !menuRef.current.contains(event.target as Node)
+        !menuRef.current.contains(target)
       ) {
         setIsOpen(false);
+      }
+       if (
+        mobileMenuOpen &&
+        target instanceof Element &&
+        !target.closest("[data-mobile-menu-toggle]") &&
+        (!mobileMenuRef.current || !mobileMenuRef.current.contains(target))
+      ) {
+        setMobileMenuOpen(false);
       }
     };
 
@@ -27,7 +38,7 @@ const Navbar = () => {
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
-  }, []);
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,6 +59,12 @@ const Navbar = () => {
       setIsEmailCopied(false);
     }, 2000);
   };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
+
 
   return (
     <>
@@ -179,7 +196,7 @@ const Navbar = () => {
                     </a></div></div>
               </div>
             </div>
-            <div className="md:hidden ">
+            <div className="md:hidden " data-mobile-menu-toggle>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-2 transition-all duration-200 active:scale-95"
@@ -207,7 +224,8 @@ const Navbar = () => {
               </button>
             </div>
             {
-              mobileMenuOpen && <div id="mobile-navigation" role="navigation" aria-label="Mobile navigation" className="
+              mobileMenuOpen && 
+              <div  id="mobile-navigation" role="navigation" aria-label="Mobile navigation" ref={mobileMenuRef} className="
             absolute md:hidden z-50 transition-all duration-300 ease-out left-0 right-0 
             animate-fadeInUp cursor-auto bg-[#faf9f6] border-2 border-black
             top-full mt-3 mx-4
@@ -217,22 +235,25 @@ const Navbar = () => {
                     <Link
                       className="text-black font-semibold py-3 px-4 transition-all duration-150 hover:bg-black hover:text-white focus:outline-none active:scale-[0.98] text-lg cursor-pointer border-b border-black/10"
                       href="/projects"
+                      onClick={closeMobileMenu}
                       style={{ fontFamily: "Sora, sans-serif" }}>
                       Work
                     </Link>
                     <Link
-                      className="text-black font-semibold py-3 px-4 transition-all duration-150 hover:bg-black hover:text-white focus:outline-none active:scale-[0.98] text-lg cursor-pointer border-b border-black/10"
+                      className="text-black font-semibold py-3 px-4 transition-all duration-150 hover:bg-black hover:text-white focus:outline-none active:scale-[0.98] text-lg cursor-pointer "
                       href="/life"
+                      onClick={closeMobileMenu}
                       style={{ fontFamily: "Sora, sans-serif" }}>
                       Life
                     </Link>
                     <Link className="text-black font-semibold py-3 px-4 transition-all duration-150 hover:bg-black hover:text-white focus:outline-none active:scale-[0.98] text-lg cursor-pointer border-b border-black/10"
                       href="/playground"
+                      onClick={closeMobileMenu}
                       style={{ fontFamily: "Sora, sans-serif" }}>
                       Play
                     </Link>
 
-                    <div className="pt-4 mt-2 border-t border-black/10">
+                    <div className="pt-4 mt-2 ">
                       <p
                         className="text-xs font-semibold text-black/50 uppercase tracking-wider mb-3 px-4"
                         style={{ fontFamily: "Sora, sans-serif" }}>
@@ -241,13 +262,16 @@ const Navbar = () => {
                       <div className="px-4 mb-2">
                         <button
                           data-sound="off"
-                          onClick={handleCopy}
+                          onClick={() => {
+                            void handleCopy();
+                            closeMobileMenu();
+                          }}
                           className={`
                         border-2 border-black font-semibold
                         px-4 py-3 text-sm flex items-center justify-center gap-2 w-full cursor-pointer
                         transition-all duration-150 ease-out
                         active:scale-[0.98]
-                        bg-daisy-green text-black hover:bg-orange-400
+                        bg-daisy-green text-black  ${isEmailCopied ? 'bg-green-400 hover:bg-green-400/40' : 'bg-orange-400/80 hover:bg-orange-400'}
                       `}
                           style={{ fontFamily: "Sora, sans-serif" }}>
                           {
@@ -261,6 +285,7 @@ const Navbar = () => {
                           href="https://github.com/Goutam96801"
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={closeMobileMenu}
                           className="
                         bg-white border-2 border-black font-semibold text-black
                         px-3 py-3 text-sm flex items-center justify-center gap-2 cursor-pointer
@@ -268,13 +293,15 @@ const Navbar = () => {
                         hover:bg-orange-400 hover:text-black
                         active:scale-[0.98] rounded-none font-sora"
                         >
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                           <span>GitHub</span>
                         </a>
                         <a
                           href="https://www.linkedin.com/in/goutam-kumar-choudhary"
                           target="_blank"
-                          rel="noopener noreferrer" className="
+                          rel="noopener noreferrer"
+                          onClick={closeMobileMenu}
+                          className="
                         bg-white border-2 border-black font-semibold text-black
                         px-3 py-3 text-sm flex items-center justify-center gap-2 cursor-pointer
                         transition-all duration-150 ease-out
@@ -282,12 +309,13 @@ const Navbar = () => {
                         active:scale-[0.98] rounded-none font-sora
                       "
                         >
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                           <span>LinkedIn</span></a>
                         <a
                           href="https://www.instagram.com/goutam_choudhary19/"
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={closeMobileMenu}
                           className="
                         col-span-2 bg-white border-2 border-black font-semibold text-black
                         px-3 py-3 text-sm flex items-center justify-center gap-2 cursor-pointer
@@ -309,6 +337,7 @@ const Navbar = () => {
                           href="https://drive.google.com/file/d/1uOd4KZpQWR73YO0o5YrhkRCdu2sqGXXm/view?usp=sharing"
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={closeMobileMenu}
                           className="
                         bg-white border-2 border-black font-semibold text-black
                         px-4 py-3 text-sm flex items-center justify-center gap-2 w-full cursor-pointer
@@ -447,7 +476,7 @@ const Navbar = () => {
 
             </div>
           </div>
-          <div className="md:hidden">
+          <div className="md:hidden" data-mobile-menu-toggle>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 transition-all duration-200 active:scale-95"
@@ -475,7 +504,7 @@ const Navbar = () => {
             </button>
           </div>
           {
-            mobileMenuOpen && <div id="mobile-navigation" role="navigation" aria-label="Mobile navigation" className="
+            mobileMenuOpen && <div id="mobile-navigation" role="navigation" aria-label="Mobile navigation" ref={mobileMenuRef} className="
             absolute md:hidden z-50 transition-all duration-300 ease-out left-0 right-0 
             animate-fadeInUp cursor-auto bg-[#faf9f6] border-2 border-black
             top-full mt-3 mx-4
@@ -485,17 +514,20 @@ const Navbar = () => {
                   <Link
                     className="text-black font-semibold py-3 px-4 transition-all duration-150 hover:bg-black hover:text-white focus:outline-none active:scale-[0.98] text-lg cursor-pointer border-b border-black/10"
                     href="/projects"
+                    onClick={closeMobileMenu}
                     style={{ fontFamily: "Sora, sans-serif" }}>
                     Work
                   </Link>
                   <Link
                     className="text-black font-semibold py-3 px-4 transition-all duration-150 hover:bg-black hover:text-white focus:outline-none active:scale-[0.98] text-lg cursor-pointer border-b border-black/10"
                     href="/life"
+                    onClick={closeMobileMenu}
                     style={{ fontFamily: "Sora, sans-serif" }}>
                     Life
                   </Link>
                   <Link className="text-black font-semibold py-3 px-4 transition-all duration-150 hover:bg-black hover:text-white focus:outline-none active:scale-[0.98] text-lg cursor-pointer border-b border-black/10"
                     href="/playground"
+                    onClick={closeMobileMenu}
                     style={{ fontFamily: "Sora, sans-serif" }}>
                     Play
                   </Link>
@@ -509,6 +541,10 @@ const Navbar = () => {
                     <div className="px-4 mb-2">
                       <button
                         data-sound="off"
+                        onClick={() => {
+                          void handleCopy();
+                          closeMobileMenu();
+                        }}
                         className="
                         border-2 border-black font-semibold
                         px-4 py-3 text-sm flex items-center justify-center gap-2 w-full cursor-pointer
@@ -517,7 +553,7 @@ const Navbar = () => {
                         bg-daisy-green text-black hover:bg-black hover:text-white
                       "
                         style={{ fontFamily: "Sora, sans-serif" }}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                         <span>Copy Email</span>
                       </button>
                     </div>
@@ -526,6 +562,7 @@ const Navbar = () => {
                         href="https://x.com/nischalskanda"
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={closeMobileMenu}
                         className="
                         bg-white border-2 border-black font-semibold text-black
                         px-3 py-3 text-sm flex items-center justify-center gap-2 cursor-pointer
@@ -539,7 +576,9 @@ const Navbar = () => {
                       <a
                         href="https://github.com/RexO77"
                         target="_blank"
-                        rel="noopener noreferrer" className="
+                        rel="noopener noreferrer"
+                        onClick={closeMobileMenu}
+                        className="
                         bg-white border-2 border-black font-semibold text-black
                         px-3 py-3 text-sm flex items-center justify-center gap-2 cursor-pointer
                         transition-all duration-150 ease-out
@@ -547,12 +586,13 @@ const Navbar = () => {
                         active:scale-[0.98] rounded-none font-sora
                       "
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                         <span>GitHub</span></a>
                       <a
                         href="https://www.linkedin.com/in/nischalskanda"
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={closeMobileMenu}
                         className="
                         col-span-2 bg-white border-2 border-black font-semibold text-black
                         px-3 py-3 text-sm flex items-center justify-center gap-2 cursor-pointer
@@ -560,7 +600,7 @@ const Navbar = () => {
                         hover:bg-black hover:text-white 
                         active:scale-[0.98] rounded-none font-sora
                       ">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                         <span>LinkedIn</span>
                       </a>
                     </div>
@@ -569,6 +609,7 @@ const Navbar = () => {
                         href="https://www.dropbox.com/scl/fi/d4c7l11u4d0xdwndentqn/Nischal_Resume.pdf?rlkey=0bx78a5ov03848z5ie9g3n2t0&amp;st=22im99an&amp;dl=0"
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={closeMobileMenu}
                         className="
                         bg-white border-2 border-black font-semibold text-black
                         px-4 py-3 text-sm flex items-center justify-center gap-2 w-full cursor-pointer
@@ -576,7 +617,7 @@ const Navbar = () => {
                         hover:bg-black hover:text-white 
                         active:scale-[0.98] rounded-none font-sora
                       ">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                         <span>Download Resume</span>
                       </a>
                     </div>

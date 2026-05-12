@@ -2,18 +2,25 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   ArrowRight,
   ArrowUpRight,
-  Check,
   ChevronDown,
   Filter as FilterIcon,
-  Layers,
+  Globe2,
+  Monitor,
+  Server,
+  Smartphone,
+  type LucideIcon,
 } from 'lucide-react';
 import projects from '@/data/projects';
 
-type FilterValue = 'all' | string;
+type ContributionDay = {
+  date: string;
+  count: number;
+  level: number;
+};
 
 const projectMeta: Record<string, { categoryLabel: string }> = {
   clarity: { categoryLabel: 'Realtime · Productivity' },
@@ -22,11 +29,6 @@ const projectMeta: Record<string, { categoryLabel: string }> = {
   whoami: { categoryLabel: 'Mobile · Anonymous Social' },
 };
 
-const PRIMARY_TECHS: { name: string; icon: string }[] = [
-  { name: 'Next.js', icon: "/icons/nextjs.svg" },
-  { name: 'React Native', icon: "/icons/reactjs.svg" },
-  { name: 'PostgreSQL', icon: "/icons/postgresql.svg" },
-];
 
 const toolkit = [
   {
@@ -74,55 +76,37 @@ const toolkit = [
 ];
 
 export default function ProjectsClient() {
-  const [filter, setFilter] = useState<FilterValue>('all');
-  const [moreOpen, setMoreOpen] = useState(false);
-  const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
-  const moreRef = useRef<HTMLDivElement | null>(null);
+  const [contributionDays, setContributionDays] = useState<ContributionDay[]>([]);
+  const [contributionsLoading, setContributionsLoading] = useState(true);
+  const [contributionsError, setContributionsError] = useState(false);
 
   useEffect(() => {
-    const handleOutside = (e: MouseEvent) => {
-      if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
-        setMoreOpen(false);
+    let active = true;
+
+    async function loadContributions() {
+      try {
+        const response = await fetch('/api/github-contributions');
+        if (!response.ok) throw new Error('Failed to load contributions');
+
+        const data = (await response.json()) as { days?: ContributionDay[] };
+        if (!active) return;
+
+        setContributionDays(data.days ?? []);
+        setContributionsError(false);
+      } catch {
+        if (active) setContributionsError(true);
+      } finally {
+        if (active) setContributionsLoading(false);
       }
+    }
+
+    loadContributions();
+
+    return () => {
+      active = false;
     };
-    document.addEventListener('mousedown', handleOutside);
-    return () => document.removeEventListener('mousedown', handleOutside);
   }, []);
 
-  const allTechs = useMemo(() => {
-    const set = new Set<string>();
-    for (const p of projects) {
-      for (const t of p.techStack) set.add(t.name);
-    }
-    return Array.from(set).sort((a, b) => a.localeCompare(b));
-  }, []);
-
-  const moreTechs = useMemo(
-    () => allTechs.filter((t) => !PRIMARY_TECHS.some((p) => p.name === t)),
-    [allTechs],
-  );
-
-  const counts = useMemo(() => {
-    const c: Record<string, number> = { all: projects.length };
-    for (const tech of allTechs) {
-      c[tech] = projects.filter((p) =>
-        p.techStack.some((t) => t.name === tech),
-      ).length;
-    }
-    return c;
-  }, [allTechs]);
-
-  const filtered = useMemo(() => {
-    if (filter === 'all') return projects;
-    return projects.filter((p) => p.techStack.some((t) => t.name === filter));
-  }, [filter]);
-
-  const primaryButtons: { id: FilterValue; label: string; icon: string }[] = [
-    { id: 'all', label: 'All Work', icon: "/icons/zap.svg" },
-    ...PRIMARY_TECHS.map(({ name, icon }) => ({ id: name, label: name, icon })),
-  ];
-
-  const isMoreActive = filter !== 'all' && moreTechs.includes(filter);
 
   return (
     <main className="min-h-screen pt-8 md:pt-12 pb-24">
@@ -142,231 +126,114 @@ export default function ProjectsClient() {
         </p>
       </section>
 
-      {/* Filter bar */}
-      <section className="mb-16 md:mb-20">
-        <div className="bg-white border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-4 md:p-6">
-          <div className="flex flex-row items-center justify-between gap-4 md:gap-5">
-            <div>
-              <p className="text-xs uppercase tracking-[0.25em] font-bold text-neutral-500 mb-1">
-                Browse
-              </p>
-              <h3 className="text-base md:text-xl font-bold text-black">
-                Filter the work by focus
-              </h3>
-            </div>
-
-            {/* Mobile: single trigger */}
-            <button
-              onClick={() => setMobileFilterOpen((o) => !o)}
-              aria-expanded={mobileFilterOpen}
-              className={`md:hidden inline-flex items-center gap-2 px-3 py-2 border-2 border-black font-bold text-sm cursor-pointer transition-all duration-150 ${filter !== 'all' || mobileFilterOpen
-                ? 'bg-orange-400 text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
-                : 'bg-white text-black'
-                }`}
-              style={{ fontFamily: 'Sora, sans-serif' }}
-            >
-              <span
-                className={`w-7 h-7 -ml-1 flex items-center justify-center border-2 border-black ${filter !== 'all' ? 'bg-black text-orange-400' : 'bg-white'
-                  }`}
-              >
-                <FilterIcon className="w-3.5 h-3.5" />
-              </span>
-              <span className="truncate max-w-32">
-                {filter === 'all' ? 'Filters' : filter}
-              </span>
-              <span className="ml-1 text-xs font-bold text-black/70">
-                {counts[filter === 'all' ? 'all' : filter] ?? 0}
-              </span>
-              <ChevronDown
-                className={`w-3.5 h-3.5 transition-transform duration-200 ${mobileFilterOpen ? 'rotate-180' : ''
-                  }`}
-              />
-            </button>
-
-            {/* Desktop: inline chips */}
-            <div className="hidden md:flex items-center gap-2 md:gap-3 flex-wrap">
-              {primaryButtons.map(({ id, label, icon }) => {
-                const isActive = filter === id;
-                return (
-                  <button
-                    key={id}
-                    onClick={() => setFilter(id)}
-                    className={`group inline-flex items-center gap-2 px-3 md:px-4 py-1.5 border-2 border-black font-bold text-sm cursor-pointer transition-all duration-150 ${isActive
-                      ? 'bg-orange-400 text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
-                      : 'bg-white text-black hover:bg-orange-400 hover:translate-x-0.5 hover:translate-y-0.5'
-                      }`}
-                    style={{ fontFamily: 'Sora, sans-serif' }}
-                  >
-                    <span
-                      className={`w-8 h-8 -ml-1 flex items-center justify-center border-2 border-black ${isActive ? ' text-orange-400' : 'bg-white'
-                        }`}
-                    >
-                      <Image
-                        src={icon}
-                        alt={label}
-                        width={28}
-                        height={28}
-                      />
-                    </span>
-                    <span>{label}</span>
-                    <span
-                      className={`ml-1 text-xs font-bold ${isActive ? 'text-black/70' : 'text-neutral-500'
-                        }`}
-                    >
-                      {counts[id] ?? 0}
-                    </span>
-                  </button>
-                );
-              })}
-
-              {/* More dropdown */}
-              <div className="relative" ref={moreRef}>
-                <button
-                  onClick={() => setMoreOpen((o) => !o)}
-                  aria-expanded={moreOpen}
-                  aria-haspopup="true"
-                  className={`group inline-flex items-center gap-2 px-3 md:px-4 py-2 md:py-2.5 border-2 border-black font-bold text-sm cursor-pointer transition-all duration-150 ${isMoreActive
-                    ? 'bg-orange-400 text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]'
-                    : 'bg-white text-black hover:bg-orange-400 hover:translate-x-0.5 hover:translate-y-0.5'
-                    }`}
-                  style={{ fontFamily: 'Sora, sans-serif' }}
-                >
-                  <span
-                    className={`w-7 h-7 -ml-1 flex items-center justify-center border-2 border-black ${isMoreActive ? 'bg-black text-orange-400' : 'bg-white'
-                      }`}
-                  >
-                    <Layers className="w-3.5 h-3.5" />
-                  </span>
-                  <span>{isMoreActive ? filter : 'More'}</span>
-                  {isMoreActive && (
-                    <span className="ml-1 text-xs font-bold text-black/70">
-                      {counts[filter] ?? 0}
-                    </span>
-                  )}
-                  <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${moreOpen ? 'rotate-180' : ''
-                      }`}
-                  />
-                </button>
-
-                {moreOpen && (
-                  <div
-                    role="menu"
-                    className="absolute right-0 mt-2 z-50 w-60 bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] animate-fadeInUp"
-                  >
-                    <div className="max-h-72 overflow-y-auto py-1">
-                      {moreTechs.length === 0 ? (
-                        <p className="px-4 py-3 text-sm text-neutral-500 font-medium">
-                          Nothing else to filter.
-                        </p>
-                      ) : (
-                        moreTechs.map((tech) => {
-                          const isSelected = filter === tech;
-                          return (
-                            <button
-                              key={tech}
-                              role="menuitem"
-                              onClick={() => {
-                                setFilter(tech);
-                                setMoreOpen(false);
-                              }}
-                              className={`flex items-center gap-3 px-4 py-2.5 w-full text-sm font-bold cursor-pointer transition-colors duration-150 border-b border-black/10 text-left text-black ${isSelected ? 'bg-orange-400' : 'hover:bg-orange-400'
-                                }`}
-                              style={{ fontFamily: 'Sora, sans-serif' }}
-                            >
-                              <span className="flex-1 truncate">{tech}</span>
-                              <span className="text-xs font-bold text-black/60">
-                                {counts[tech] ?? 0}
-                              </span>
-                              {isSelected && <Check className="w-4 h-4 text-black" />}
-                            </button>
-                          );
-                        })
-                      )}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile expanded panel */}
-          {mobileFilterOpen && (
-            <div className="md:hidden mt-5 pt-5 border-t-2 border-black/10 animate-fadeInUp">
-              <p className="text-[11px] uppercase tracking-[0.25em] font-bold text-neutral-500 mb-3">
-                Featured
-              </p>
-              <div className="grid grid-cols-2 gap-2 mb-5">
-                {primaryButtons.map(({ id, label, icon }) => {
-                  const isActive = filter === id;
-                  return (
-                    <button
-                      key={id}
-                      onClick={() => {
-                        setFilter(id);
-                        setMobileFilterOpen(false);
-                      }}
-                      className={`inline-flex items-center gap-2 px-3 py-2.5 border-2 border-black font-bold text-sm cursor-pointer transition-colors duration-150 ${isActive ? 'bg-orange-400' : 'bg-white hover:bg-orange-400'
-                        }`}
-                      style={{ fontFamily: 'Sora, sans-serif' }}
-                    >
-                      <span
-                        className={`w-6 h-6 flex items-center justify-center border-2 border-black ${isActive ? 'bg-black text-orange-400' : 'bg-white'
-                          }`}
-                      >
-                        <Image
-                          src={icon}
-                          alt={label}
-                          fill
-                        />
-                      </span>
-                      <span className="flex-1 text-left truncate">{label}</span>
-                      <span className="text-xs font-bold text-black/60">
-                        {counts[id] ?? 0}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {moreTechs.length > 0 && (
-                <>
-                  <p className="text-[11px] uppercase tracking-[0.25em] font-bold text-neutral-500 mb-3">
-                    More tech
-                  </p>
-                  <div className="border-2 border-black bg-white max-h-64 overflow-y-auto">
-                    {moreTechs.map((tech) => {
-                      const isSelected = filter === tech;
-                      return (
-                        <button
-                          key={tech}
-                          onClick={() => {
-                            setFilter(tech);
-                            setMobileFilterOpen(false);
-                          }}
-                          className={`flex items-center gap-3 px-4 py-3 w-full text-sm font-bold cursor-pointer transition-colors duration-150 border-b border-black/10 last:border-b-0 text-left text-black ${isSelected ? 'bg-orange-400' : 'hover:bg-orange-400'
-                            }`}
-                          style={{ fontFamily: 'Sora, sans-serif' }}
-                        >
-                          <span className="flex-1 truncate">{tech}</span>
-                          <span className="text-xs font-bold text-black/60">
-                            {counts[tech] ?? 0}
-                          </span>
-                          {isSelected && <Check className="w-4 h-4 text-black" />}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </>
-              )}
-            </div>
-          )}
-        </div>
-      </section>
 
       {/* Project cards — alternating */}
       <section className="mb-20 md:mb-28 space-y-10 md:space-y-14">
-        {filtered.map((project, idx) => {
+        <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-16 text-center transition-all duration-500 delay-200 opacity-100 translate-y-0">
+          <span className="inline-block relative pb-[0.15em]">
+            All Projects
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 100 20"
+              preserveAspectRatio="none"
+              className="absolute left-0 right-0 bottom-0 h-[0.7em] w-full pointer-events-none overflow-visible"
+            >
+              <defs>
+                <filter
+                  id="scribble-wobble"
+                  x="-50%"
+                  y="-50%"
+                  width="200%"
+                  height="200%"
+                >
+                  <feTurbulence
+                    baseFrequency="0.04 0.08"
+                    numOctaves="2"
+                    result="turbulence"
+                    seed="1"
+                  />
+                  <feDisplacementMap
+                    in="SourceGraphic"
+                    in2="turbulence"
+                    scale="1.5"
+                    xChannelSelector="R"
+                    yChannelSelector="G"
+                  />
+                </filter>
+
+                <filter
+                  id="scribble-wobble-strong"
+                  x="-50%"
+                  y="-50%"
+                  width="200%"
+                  height="200%"
+                >
+                  <feTurbulence
+                    baseFrequency="0.05 0.1"
+                    numOctaves="2"
+                    result="turbulence"
+                    seed="2"
+                  />
+                  <feDisplacementMap
+                    in="SourceGraphic"
+                    in2="turbulence"
+                    scale="2"
+                    xChannelSelector="R"
+                    yChannelSelector="G"
+                  />
+                </filter>
+              </defs>
+
+              {/* Background Stroke */}
+              <path
+                d="M2,15 Q18,19 34,15 T66,15 T98,15"
+                pathLength={100}
+                style={{
+                  fill: "none",
+                  stroke: "rgb(29, 78, 216)",
+                  strokeOpacity: 0.25,
+                  strokeWidth: 9,
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  filter: "url(#scribble-wobble)",
+                  strokeDasharray: 100,
+                  strokeDashoffset: 0,
+                  opacity: 0.35,
+                  transition:
+                    "stroke-dashoffset 650ms cubic-bezier(0.16,1,0.3,1), opacity 420ms cubic-bezier(0.16,1,0.3,1)",
+                }}
+              />
+
+              {/* Main Stroke */}
+              <g
+                style={{
+                  transformOrigin: "50px 10px",
+                  animation: "scribble-wiggle 6s ease-in-out infinite",
+                }}
+              >
+                <path
+                  d="M2,14 Q18,18 34,14 T66,14 T98,14"
+                  pathLength={100}
+                  style={{
+                    fill: "none",
+                    stroke: "rgb(29, 78, 216)",
+                    strokeWidth: 6,
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    filter: "url(#scribble-wobble)",
+                    strokeDasharray: 100,
+                    strokeDashoffset: 0,
+                    opacity: 1,
+                    transition:
+                      "stroke-dashoffset 650ms cubic-bezier(0.16,1,0.3,1) 40ms, opacity 420ms cubic-bezier(0.16,1,0.3,1) 40ms",
+                  }}
+                />
+              </g>
+            </svg>
+
+          </span>
+        </h2>
+        {projects.map((project, idx) => {
           const meta = projectMeta[project.id];
           const isReversed = idx % 2 === 1;
           return (
@@ -416,10 +283,10 @@ export default function ProjectsClient() {
           );
         })}
 
-        {filtered.length === 0 && (
+        {projects.length === 0 && (
           <div className="text-center py-16 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
             <p className="text-base font-bold text-neutral-700">
-              Nothing in this category yet — more on the way.
+              Nothing to show for now — coming soon.
             </p>
           </div>
         )}
@@ -493,14 +360,11 @@ export default function ProjectsClient() {
             </a>
           </div>
 
-          <div className="border-2 border-black bg-neutral-50 p-4 md:p-5 overflow-x-auto">
-            {/* Live GitHub contribution graph (SVG from ghchart.rshah.org) */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://ghchart.rshah.org/22c55e/Goutam96801"
-              alt="GitHub contribution graph for Goutam96801"
-              className="w-full min-w-160 h-auto"
-              loading="lazy"
+          <div className="  p-2 overflow-x-auto">
+            <GitHubContributionGraph
+              days={contributionDays}
+              loading={contributionsLoading}
+              error={contributionsError}
             />
           </div>
 
@@ -524,4 +388,123 @@ export default function ProjectsClient() {
       </section>
     </main>
   );
+}
+
+function GitHubContributionGraph({
+  days,
+  loading,
+  error,
+}: {
+  days: ContributionDay[];
+  loading: boolean;
+  error: boolean;
+}) {
+  const weeks = useMemo(() => buildContributionWeeks(days), [days]);
+
+  if (loading) {
+    return (
+      <div className="flex min-w-160 gap-1" aria-label="Loading GitHub contribution graph">
+        {Array.from({ length: 53 }).map((_, weekIndex) => (
+          <div key={weekIndex} className="grid grid-rows-7 gap-1">
+            {Array.from({ length: 7 }).map((__, dayIndex) => (
+              <span
+                key={dayIndex}
+                className="h-3 w-3 animate-pulse border border-neutral-300 bg-neutral-200 md:h-3.5 md:w-3.5"
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (error || days.length === 0) {
+    return (
+      <>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://ghchart.rshah.org/22c55e/Goutam96801"
+          alt="GitHub contribution graph for Goutam96801"
+          className="h-auto w-full min-w-160"
+          loading="lazy"
+        />
+      </>
+    );
+  }
+
+  return (
+    <div className="flex min-w-160 justify-center gap-1" aria-label="GitHub contribution graph">
+      {weeks.map((week, weekIndex) => (
+        <div key={weekIndex} className="grid grid-rows-7 gap-1">
+          {week.map((day, dayIndex) => {
+            if (!day) {
+              return (
+                <span
+                  key={dayIndex}
+                  className="h-3 w-3 border border-transparent md:h-3.5 md:w-3.5"
+                />
+              );
+            }
+
+            const label = getContributionLabel(day);
+
+            return (
+              <span
+                key={day.date}
+                aria-label={label}
+                title={label}
+                className={`group/cell relative h-3 w-3 cursor-default border md:h-3.5 md:w-3.5 ${getContributionClass(day.level)}`}
+              />
+            );
+          })}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function buildContributionWeeks(days: ContributionDay[]) {
+  if (days.length === 0) return [];
+
+  const dayMap = new Map(days.map((day) => [day.date, day]));
+  const first = new Date(`${days[0].date}T00:00:00Z`);
+  const last = new Date(`${days[days.length - 1].date}T00:00:00Z`);
+  const cursor = new Date(first);
+  cursor.setUTCDate(cursor.getUTCDate() - cursor.getUTCDay());
+
+  const weeks: Array<Array<ContributionDay | null>> = [];
+
+  while (cursor <= last) {
+    const week: Array<ContributionDay | null> = [];
+
+    for (let dayIndex = 0; dayIndex < 7; dayIndex += 1) {
+      const date = cursor.toISOString().slice(0, 10);
+      week.push(dayMap.get(date) ?? null);
+      cursor.setUTCDate(cursor.getUTCDate() + 1);
+    }
+
+    weeks.push(week);
+  }
+
+  return weeks;
+}
+
+function getContributionLabel(day: ContributionDay) {
+  const date = new Date(`${day.date}T00:00:00Z`).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
+  const unit = day.count === 1 ? 'contribution' : 'contributions';
+
+  return `${day.count} ${unit} on ${date}`;
+}
+
+function getContributionClass(level: number) {
+  if (level >= 4) return 'border-green-900 bg-green-800';
+  if (level === 3) return 'border-green-700 bg-green-600';
+  if (level === 2) return 'border-green-500 bg-green-400';
+  if (level === 1) return 'border-green-300 bg-green-200';
+  return 'border-neutral-300 bg-neutral-200';
 }
