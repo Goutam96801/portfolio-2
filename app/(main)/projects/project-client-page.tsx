@@ -269,14 +269,14 @@ export default function ProjectsClient() {
               {/* Image */}
               <Link
                 href={`/projects/${project.id}`}
-                className="group relative aspect-4/3 border-2 border-black overflow-hidden bg-neutral-100/50 block"
+                className="group relative aspect-video border-2 border-black overflow-hidden block"
+                style={{ backgroundColor: `${project.accentColor}33` }}
               >
                 <Image
                   src={project.coverImage}
                   alt={project.title}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-contain transition-transform duration-700 group-hover:scale-[1.04]"
                 />
               </Link>
             </article>

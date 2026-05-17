@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { Kalam, Inter, Sora, JetBrains_Mono } from "next/font/google";
 import GlobalClickSound from "@/components/global-click-sound";
+import { ContextMenu } from "@/components/context-menu";
+import { CursorWrapper } from "@/components/cursor-wrapper";
+import { SettingsEffects } from "@/components/settings-effects";
 import "./globals.css";
 import InitialLoader from "@/components/InitialLoader";
 import { LoaderProvider } from "@/providers/LoaderProvider";
+import { SettingsProvider } from "@/providers/SettingsProvider";
 
 const kalam = Kalam({
   weight: ["400", "700"],
@@ -45,13 +49,16 @@ export default function RootLayout({
       className={`${kalam.variable} ${inter.variable} ${sora.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body>
-        <LoaderProvider name="Goutam">
-
-          <GlobalClickSound />
-
-          {children}
-        </LoaderProvider>
+        <SettingsProvider>
+          <LoaderProvider name="Goutam">
+            <SettingsEffects />
+            <GlobalClickSound />
+            <ContextMenu />
+            <CursorWrapper />
+            {children}
+          </LoaderProvider>
+        </SettingsProvider>
       </body>
-    </html >
+    </html>
   );
 }

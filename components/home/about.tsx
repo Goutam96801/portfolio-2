@@ -4,7 +4,7 @@ import Image from "next/image"
 
 export const AboutMe = () => {
     return (
-        <section id="projects" aria-label="Featured projects" className="py-8 md:py-16 relative" >
+        <section id="projects" aria-label="Featured projects" className="py-8 md:py-16 relative animate-fadeInUp" >
             <div className="absolute top-1/4 -left-12 opacity-70 hidden lg:block transform rotate-12">
                 <img
                     src="/shared/headphone.png"

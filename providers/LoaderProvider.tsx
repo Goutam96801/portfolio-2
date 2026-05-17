@@ -14,7 +14,6 @@ export function LoaderProvider({ children, name }: { children: React.ReactNode; 
   const [showLoader, setShowLoader] = useState(false);
   const [showApp, setShowApp] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const playSound = useClickSound();
 
   useEffect(() => {
     // Check if this is the first visit
@@ -30,17 +29,6 @@ export function LoaderProvider({ children, name }: { children: React.ReactNode; 
     setIsLoading(false);
   }, []);
 
-  useEffect(() => {
-    const handleGlobalClick = () => {
-      playSound();
-    };
-
-    document.addEventListener('click', handleGlobalClick);
-    
-    return () => {
-      document.removeEventListener('click', handleGlobalClick);
-    };
-  }, [playSound]);
 
   if (isLoading) {
     return null;

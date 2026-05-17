@@ -7,16 +7,17 @@ import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Certification } from "./certification";
 import { Photos } from "./photos";
+import { Experiences } from "./experiences";
 
 const MIN_ZOOM = 0.4;
 const MAX_ZOOM = 2;
 const ZOOM_STEP = 0.1;
 const DEFAULT_ZOOM = 0.65;
 
-const CANVAS_WIDTH = 2300;
+const CANVAS_WIDTH = 2900;
 const CANVAS_HEIGHT = 900;
 
-type SectionId = "certifications" | "photos";
+type SectionId = "certifications" | "photos" | "experiences";
 
 export function PlaygroundCanvas() {
   const router = useRouter();
@@ -24,7 +25,7 @@ export function PlaygroundCanvas() {
   const [zoom, setZoom] = useState(DEFAULT_ZOOM);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isPanning, setIsPanning] = useState(false);
-  const [activeSection, setActiveSection] = useState<SectionId>("certifications");
+  const [activeSection, setActiveSection] = useState<SectionId>("experiences");
   
 
   const panStart = useRef({ x: 0, y: 0, panX: 0, panY: 0 });
@@ -72,10 +73,10 @@ export function PlaygroundCanvas() {
         ? (window.location.hash.replace("#", "") as SectionId)
         : "";
     requestAnimationFrame(() => {
-      if (hash === "certifications" || hash === "photos") {
+      if (hash === "certifications" || hash === "photos" || hash === "experiences") {
         scrollToSection(hash);
       } else {
-        scrollToSection("certifications");
+        scrollToSection("experiences");
       }
     });
   }, [scrollToSection]);
@@ -157,7 +158,7 @@ export function PlaygroundCanvas() {
   const zoomOut = () => zoomAtCenter(-ZOOM_STEP);
   const resetView = () => {
     setZoom(DEFAULT_ZOOM);
-    requestAnimationFrame(() => scrollToSection("certifications"));
+    requestAnimationFrame(() => scrollToSection("experiences"));
   };
 
   return (
@@ -227,16 +228,20 @@ export function PlaygroundCanvas() {
                 Drag to pan. Scroll or pinch to zoom.
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
+                <span className="rounded-full bg-yellow-100 px-2 py-1 text-xs text-yellow-700">
+                  1 → Experiences
+                </span>
                 <span className="rounded-full bg-green-100 px-2 py-1 text-xs text-green-700">
-                  1 → Certifications
+                  2 → Certifications
                 </span>
                 <span className="rounded-full bg-purple-100 px-2 py-1 text-xs text-purple-700">
-                  2 → Photos
+                  3 → Photos
                 </span>
               </div>
             </div>
           </div>
 
+          <Experiences />
           <Certification />
           <Photos />
         </div>
@@ -325,6 +330,18 @@ export function PlaygroundCanvas() {
             </button>
             <div className="w-px h-5 bg-stone-200 mx-1" />
             <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={() => scrollToSection("experiences")}
+                className={cn(
+                  "px-2 py-1 text-xs font-medium rounded-lg transition-colors",
+                  activeSection === "experiences"
+                    ? "bg-yellow-100 text-yellow-700"
+                    : "text-stone-500 hover:bg-yellow-100 hover:text-yellow-700",
+                )}
+              >
+                Experiences
+              </button>
               <button
                 type="button"
                 onClick={() => scrollToSection("certifications")}

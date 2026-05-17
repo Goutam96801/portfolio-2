@@ -22,7 +22,7 @@ const tapePosition = {
 
 export const Photos = () => {
   return (
-    <div id="photos" className="absolute left-375 top-30">
+    <div id="photos" className="absolute left-556 top-30">
       <div className="mb-8">
         <div className="relative inline-block">
           <div className="absolute inset-0 -inset-x-2 -inset-y-1 -z-10 -rotate-1 rounded bg-[#e9d5ff]" />

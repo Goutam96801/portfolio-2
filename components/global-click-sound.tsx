@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import useSound from "use-sound";
+import { useSettings } from "@/providers/SettingsProvider";
 
 export default function GlobalClickSound() {
   const [play] = useSound("/sounds/click-sound.wav", {
@@ -9,8 +10,11 @@ export default function GlobalClickSound() {
     playbackRate: 1,
     interrupt: true,
   });
+  const { isMuted } = useSettings();
 
   useEffect(() => {
+    if (isMuted) return;
+
     const handleClick = () => {
       play();
     };
@@ -20,7 +24,7 @@ export default function GlobalClickSound() {
     return () => {
       window.removeEventListener("click", handleClick);
     };
-  }, [play]);
+  }, [play, isMuted]);
 
   return null;
 }

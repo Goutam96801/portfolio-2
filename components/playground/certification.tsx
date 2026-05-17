@@ -42,7 +42,7 @@ const certificates = [
 ]
 export const Certification = () => {
   return (
-    <div id="certifications" className="absolute left-87.5 top-30">
+    <div id="certifications" className="absolute left-267 top-30">
       <div className="mb-6">
         <div className="relative inline-block">
           <div className="absolute inset-0 -inset-x-2 -inset-y-1 -z-10 -rotate-1 rounded bg-[#a2ff86]" />
@@ -54,7 +54,7 @@ export const Certification = () => {
       <div className="w-275 rounded-2xl border border-stone-200 bg-white/90 p-8 shadow-xl backdrop-blur-sm">
 
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 grid-cols-3">
           {certificates.map((cert) => (
             <figure key={cert.id} className="space-y-3">
               <div
@@ -64,7 +64,7 @@ export const Certification = () => {
                   src={cert.image}
                   alt={cert.title}
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  sizes="33vw"
                   className="object-cover"
                 />
               </div>

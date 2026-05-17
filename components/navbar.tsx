@@ -145,7 +145,7 @@ const Navbar = () => {
                       <span className="flex-1 text-left">{isEmailCopied ? 'Copied' : 'Email'}</span>
                       <Copy className="ml-auto w-3 h-3 opacity-40" />
                     </button>
-                    <a
+                    <Link
                       href="https://github.com/Goutam96801"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -155,8 +155,8 @@ const Navbar = () => {
                       </span>
                       <span className="relative">GitHub</span>
                       <ExternalLink className="ml-auto w-3 h-3 opacity-40" />
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href="https://www.linkedin.com/in/goutam-kumar-choudhary"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -166,8 +166,8 @@ const Navbar = () => {
                       </span>
                       <span className="relative">LinkedIn</span>
                       <ExternalLink className="ml-auto w-3 h-3 opacity-40" />
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href="https://www.instagram.com/goutam_choudhary19/"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -182,8 +182,8 @@ const Navbar = () => {
                         <span className="absolute -top-2 -right-8 text-[7px] font-semibold uppercase px-1 py-px bg-orange-400/80 text-black rounded-xs leading-none">active</span>
                       </span>
                       <ExternalLink className="ml-auto w-3 h-3 opacity-40" />
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                       href="https://drive.google.com/file/d/1uOd4KZpQWR73YO0o5YrhkRCdu2sqGXXm/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -193,7 +193,7 @@ const Navbar = () => {
                       </span>
                       <span className="relative">Resume</span>
                       <ExternalLink className="ml-auto w-3 h-3 opacity-40" />
-                    </a></div></div>
+                    </Link></div></div>
               </div>
             </div>
             <div className="md:hidden " data-mobile-menu-toggle>
@@ -281,7 +281,7 @@ const Navbar = () => {
                         </button>
                       </div>
                       <div className="grid grid-cols-2 gap-2 px-4">
-                        <a
+                        <Link
                           href="https://github.com/Goutam96801"
                           target="_blank"
                           rel="noopener noreferrer"
@@ -295,8 +295,8 @@ const Navbar = () => {
                         >
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                           <span>GitHub</span>
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                           href="https://www.linkedin.com/in/goutam-kumar-choudhary"
                           target="_blank"
                           rel="noopener noreferrer"
@@ -310,8 +310,8 @@ const Navbar = () => {
                       "
                         >
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                          <span>LinkedIn</span></a>
-                        <a
+                          <span>LinkedIn</span></Link>
+                        <Link
                           href="https://www.instagram.com/goutam_choudhary19/"
                           target="_blank"
                           rel="noopener noreferrer"
@@ -330,10 +330,10 @@ const Navbar = () => {
                             Instagram
                             <span className="absolute -top-2 -right-8 text-[7px] font-semibold uppercase px-1 py-px bg-orange-400/80 text-black rounded-xs leading-none">active</span>
                           </span>
-                        </a>
+                        </Link>
                       </div>
                       <div className="px-4 mt-2">
-                        <a
+                        <Link
                           href="https://drive.google.com/file/d/1uOd4KZpQWR73YO0o5YrhkRCdu2sqGXXm/view?usp=sharing"
                           target="_blank"
                           rel="noopener noreferrer"
@@ -347,7 +347,7 @@ const Navbar = () => {
                       ">
                           <FileText size={16} />
                           <span>Resume</span>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </nav>
@@ -422,7 +422,7 @@ const Navbar = () => {
                     <span className="flex-1 text-left">{isEmailCopied ? 'Copied' : 'Email'}</span>
                     <Copy className="ml-auto w-3 h-3 opacity-40" />
                   </button>
-                  <a
+                  <Link
                     href="https://github.com/Goutam96801"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -432,8 +432,8 @@ const Navbar = () => {
                     </span>
                     <span className="relative">GitHub</span>
                     <ExternalLink className="ml-auto w-3 h-3 opacity-40" />
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="https://www.linkedin.com/in/goutam-kumar-choudhary"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -443,8 +443,8 @@ const Navbar = () => {
                     </span>
                     <span className="relative">LinkedIn</span>
                     <ExternalLink className="ml-auto w-3 h-3 opacity-40" />
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="https://www.instagram.com/goutam_choudhary19/"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -459,8 +459,8 @@ const Navbar = () => {
                       <span className="absolute -top-2 -right-8 text-[7px] font-semibold uppercase px-1 py-px bg-orange-400/80 text-black rounded-xs leading-none">active</span>
                     </span>
                     <ExternalLink className="ml-auto w-3 h-3 opacity-40" />
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="https://drive.google.com/file/d/1uOd4KZpQWR73YO0o5YrhkRCdu2sqGXXm/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -470,7 +470,7 @@ const Navbar = () => {
                     </span>
                     <span className="relative">Resume</span>
                     <ExternalLink className="ml-auto w-3 h-3 opacity-40" />
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -558,7 +558,7 @@ const Navbar = () => {
                       </button>
                     </div>
                     <div className="grid grid-cols-2 gap-2 px-4">
-                      <a
+                      <Link
                         href="https://x.com/nischalskanda"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -572,8 +572,8 @@ const Navbar = () => {
                       >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
                         <span>X</span>
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         href="https://github.com/RexO77"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -587,8 +587,8 @@ const Navbar = () => {
                       "
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        <span>GitHub</span></a>
-                      <a
+                        <span>GitHub</span></Link>
+                      <Link
                         href="https://www.linkedin.com/in/nischalskanda"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -602,10 +602,10 @@ const Navbar = () => {
                       ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                         <span>LinkedIn</span>
-                      </a>
+                      </Link>
                     </div>
                     <div className="px-4 mt-2">
-                      <a
+                      <Link
                         href="https://www.dropbox.com/scl/fi/d4c7l11u4d0xdwndentqn/Nischal_Resume.pdf?rlkey=0bx78a5ov03848z5ie9g3n2t0&amp;st=22im99an&amp;dl=0"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -619,7 +619,7 @@ const Navbar = () => {
                       ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                         <span>Download Resume</span>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </nav>

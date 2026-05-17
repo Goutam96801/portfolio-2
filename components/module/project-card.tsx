@@ -31,11 +31,11 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
 
     return (
         <div
-            className="transition-all duration-300 hover:scale-[1.02] shrink-0 w-70 sm:w-[320px] md:w-85 min-h-105 ml-0 "
+            className="transition-all duration-300 hover:scale-[1.02] shrink-0 max-w-70 sm:w-[320px] md:max-w-85  min-h-105 ml-0 w-full "
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <Link className="block group h-95" href={`/projects/${project.id}`}>
+            <Link className="block group min-h-95" href={`/projects/${project.id}`}>
                 <div className="modern-card micro-tilt-card h-full transition-all duration-300 cursor-pointer group-hover:shadow-xl flex flex-col group overflow-hidden bg-white pb-4">
 
                     <div className="relative mb-5 overflow-hidden rounded-none bg-gray-100 aspect-4/3 shrink-0 transition-transform duration-500 ease-out group-hover:scale-[1.02] micro-image">

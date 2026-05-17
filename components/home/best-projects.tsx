@@ -6,7 +6,7 @@ import Link from "next/link"
 
 export const BestProjects = () => {
     return (
-        <section id="projects" aria-label="Featured projects" className="py-8 md:py-16 relative" >
+        <section id="projects" aria-label="Featured projects" className="py-8 md:py-16 relative animate-fadeInUp" >
             <div className="absolute top-1/4 -right-12 opacity-70 hidden lg:block transform rotate-12">
                 <img
                     src="/shared/flower.png"
