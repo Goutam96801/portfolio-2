@@ -33,10 +33,10 @@ const Navbar = () => {
       }
     };
 
-    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("click", handleOutsideClick);
 
     return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("click", handleOutsideClick);
     };
   }, [mobileMenuOpen]);
 
@@ -62,6 +62,10 @@ const Navbar = () => {
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
+  };
+
+  const closeDesktopMenu = () => {
+    setIsOpen(false);
   };
 
 
@@ -125,6 +129,7 @@ const Navbar = () => {
                 </button>
 
                 <div className="absolute top-full right-0 mt-2 z-50"
+                  onClick={(event) => event.stopPropagation()}
                   style={{
                     opacity: isOpen ? 1 : 0,
                     transform: isOpen ? "none" : "translateY(-10px)",
@@ -149,6 +154,7 @@ const Navbar = () => {
                       href="https://github.com/Goutam96801"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={closeDesktopMenu}
                       className="flex items-center font-sora gap-3 px-4 py-3 w-full text-sm font-medium transition-colors duration-150 border-b border-black/10 text-black hover:bg-orange-400" >
                       <span className="shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
@@ -160,6 +166,7 @@ const Navbar = () => {
                       href="https://www.linkedin.com/in/goutam-kumar-choudhary"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={closeDesktopMenu}
                       className="flex items-center font-sora gap-3 px-4 py-3 w-full text-sm font-medium transition-colors duration-150 border-b border-black/10 text-black hover:bg-orange-400" >
                       <span className="shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
@@ -171,6 +178,7 @@ const Navbar = () => {
                       href="https://www.instagram.com/goutam_choudhary19/"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={closeDesktopMenu}
                       className="flex items-center font-sora gap-3 px-4 py-3 w-full text-sm font-medium transition-colors duration-150 border-b border-black/10 text-black hover:bg-orange-400" >
                       <span className="shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-instagram" viewBox="0 0 16 16">
@@ -187,6 +195,7 @@ const Navbar = () => {
                       href="https://drive.google.com/file/d/1uOd4KZpQWR73YO0o5YrhkRCdu2sqGXXm/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={closeDesktopMenu}
                       className="flex items-center font-sora gap-3 px-4 py-3 w-full text-sm font-medium transition-colors duration-150 border-b border-black/10 text-black hover:bg-orange-400" >
                       <span className="shrink-0">
                         <FileText size={16} />
@@ -402,6 +411,7 @@ const Navbar = () => {
               </button>
               <div
                 className="absolute top-full right-0 mt-2 z-50"
+                onClick={(event) => event.stopPropagation()}
                 style={{
                   opacity: isOpen ? 1 : 0,
                   transform: isOpen ? "none" : "translateY(-10px)",
@@ -426,6 +436,7 @@ const Navbar = () => {
                     href="https://github.com/Goutam96801"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={closeDesktopMenu}
                     className="flex items-center font-sora gap-3 px-4 py-3 w-full text-sm font-medium transition-colors duration-150 border-b border-black/10 text-black hover:bg-orange-400" >
                     <span className="shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
@@ -437,6 +448,7 @@ const Navbar = () => {
                     href="https://www.linkedin.com/in/goutam-kumar-choudhary"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={closeDesktopMenu}
                     className="flex items-center font-sora gap-3 px-4 py-3 w-full text-sm font-medium transition-colors duration-150 border-b border-black/10 text-black hover:bg-orange-400" >
                     <span className="shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
@@ -448,6 +460,7 @@ const Navbar = () => {
                     href="https://www.instagram.com/goutam_choudhary19/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={closeDesktopMenu}
                     className="flex items-center font-sora gap-3 px-4 py-3 w-full text-sm font-medium transition-colors duration-150 border-b border-black/10 text-black hover:bg-orange-400" >
                     <span className="shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-instagram" viewBox="0 0 16 16">
@@ -464,6 +477,7 @@ const Navbar = () => {
                     href="https://drive.google.com/file/d/1uOd4KZpQWR73YO0o5YrhkRCdu2sqGXXm/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={closeDesktopMenu}
                     className="flex items-center font-sora gap-3 px-4 py-3 w-full text-sm font-medium transition-colors duration-150 border-b border-black/10 text-black hover:bg-orange-400" >
                     <span className="shrink-0">
                       <FileText size={16} />

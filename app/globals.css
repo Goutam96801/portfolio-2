@@ -30,6 +30,46 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+body.custom-cursor-active {
+  cursor: none;
+}
+
+body.custom-cursor-active *,
+body.custom-cursor-active a,
+body.custom-cursor-active button,
+body.custom-cursor-active [role="button"],
+body.custom-cursor-active input,
+body.custom-cursor-active textarea,
+body.custom-cursor-active select {
+  cursor: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.custom-cursor-active,
+  body.custom-cursor-active *,
+  body.custom-cursor-active a,
+  body.custom-cursor-active button,
+  body.custom-cursor-active [role="button"],
+  body.custom-cursor-active input,
+  body.custom-cursor-active textarea,
+  body.custom-cursor-active select {
+    cursor: auto !important;
+  }
+}
+
+@media (pointer: coarse) {
+  body.custom-cursor-active,
+  body.custom-cursor-active *,
+  body.custom-cursor-active a,
+  body.custom-cursor-active button,
+  body.custom-cursor-active [role="button"],
+  body.custom-cursor-active input,
+  body.custom-cursor-active textarea,
+  body.custom-cursor-active select {
+    cursor: auto !important;
+  }
+}
+
 #initial-loader {
   position: fixed;
   inset: 0;

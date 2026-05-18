@@ -18,7 +18,7 @@ export function SettingsProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [cursorUpgraded, setCursorUpgraded] = useState(false);
+  const [cursorUpgraded, setCursorUpgraded] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
 
   const toggleCursor = () => {
