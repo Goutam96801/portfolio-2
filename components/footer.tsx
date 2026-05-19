@@ -18,7 +18,7 @@ const Footer = () => {
 
     return (
         <footer className="group/footer relative isolate overflow-hidden border-t border-[#d9c7a8]/70 bg-[#fbf5ec] text-[#2c241b] animate-fadeInUp">
-            <div className="min-h-0 overflow-hidden relative z-10 aspect-1916/700">
+            <div className="min-h-0 overflow-hidden relative z-10" style={{ aspectRatio: "1200 / 422" }}>
                 <Image
                     src="/footer-light.webp"
                     alt=""

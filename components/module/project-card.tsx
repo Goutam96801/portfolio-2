@@ -46,7 +46,10 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
                                     src={image}
                                     alt={project.title}
                                     fill
-                                    loading="lazy"
+                                    loading={index === 0 ? "eager" : "lazy"}
+                                    fetchPriority={index === 0 ? "high" : "auto"}
+                                    preload={index === 0}
+                                    sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 1024px) 320px, 320px"
                                     decoding="async"
                                     className={`
                     object-cover absolute inset-0
@@ -76,7 +79,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
                         <div className="mt-4 flex items-center text-sm font-medium">
                             <span className="inline-block transition-colors duration-300 relative pb-[0.15em]"
                                 style={{
-                                    color: isHovered ? project.accentColor : "#99a1AF",
+                                    color: isHovered ? project.accentColor : "#4B5563",
                                 }}
                             >
                                 <span className="flex items-center gap-2">
