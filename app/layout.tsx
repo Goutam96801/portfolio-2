@@ -8,6 +8,7 @@ import "./globals.css";
 import InitialLoader from "@/components/InitialLoader";
 import { LoaderProvider } from "@/providers/LoaderProvider";
 import { SettingsProvider } from "@/providers/SettingsProvider";
+import { PostHogProvider } from "@/providers/PosthogProvider";
 
 const kalam = Kalam({
   weight: ["400", "700"],
@@ -49,15 +50,17 @@ export default function RootLayout({
       className={`${kalam.variable} ${inter.variable} ${sora.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body>
-        <SettingsProvider>
-          <LoaderProvider name="Goutam">
-            <SettingsEffects />
-            <GlobalClickSound />
-            <ContextMenu />
-            <CursorWrapper />
-            {children}
-          </LoaderProvider>
-        </SettingsProvider>
+        <PostHogProvider>
+          <SettingsProvider>
+            <LoaderProvider name="Goutam">
+              <SettingsEffects />
+              <GlobalClickSound />
+              <ContextMenu />
+              <CursorWrapper />
+              {children}
+            </LoaderProvider>
+          </SettingsProvider>
+        </PostHogProvider>
       </body>
     </html>
   );
