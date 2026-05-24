@@ -4,6 +4,7 @@ import { ArrowLeft, ExternalLink, Play } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import DemoCredentials from "@/components/demo-credentials";
 
 export async function generateMetadata(
   { params }: Props
@@ -87,6 +88,22 @@ const ProjectDetails = async ({ params }: Props) => {
               <ExternalLink size={18} />
             </Link>
           </div>
+
+          {
+            project.credentials && (
+              <div
+                className="max-w-2xl mx-auto opacity-0 animate-fadeInUp border-2 border-black bg-[#faf6ef] p-6 md:p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="inline-block w-10 h-1 bg-orange-400"></span>
+                  <h3 className="text-xs uppercase tracking-[0.25em] font-bold text-orange-500">
+                    Demo Credentials
+                  </h3>
+                </div>
+                <DemoCredentials provider={project.credentials.provider} password={project.credentials.password} />
+              </div>
+            )
+          }
         </div>
 
         {/* Cover Image */}

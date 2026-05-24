@@ -15,6 +15,11 @@ export interface TechStackItem {
   description: string;
 }
 
+export interface Credential {
+  provider: string;
+  password: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -30,6 +35,7 @@ export interface Project {
   accentColor: string;
 
   techStack: TechStackItem[];
+  credentials?: Credential;
 }
 
 export const projects: Project[] = [
@@ -266,6 +272,10 @@ export const projects: Project[] = [
         description: `Handles fetching, caching, optimistic updates, and background revalidation so the UI stays snappy and the network stays quiet.`,
       },
     ],
+    credentials: {
+      provider: "gautamkumar96801@gmail.com",
+      password: "12345678"
+    },
   },
 
   {
@@ -683,6 +693,10 @@ export const projects: Project[] = [
         description: `Generates context-aware message prompts so senders can find the right words even when they're staring at a blank box.`,
       },
     ],
+    credentials: {
+      provider: "gautamkumar96801@gmail.com",
+      password: "123456"
+    },
   },
 
   {
@@ -933,7 +947,7 @@ export const projects: Project[] = [
       {
         name: "MongoDB",
         icon: "/icons/mongodb.svg",
-        role:  "Database & persistence",
+        role: "Database & persistence",
         description: `MongoDB Atlas with Mongoose handles user profiles, conversations, notifications, and message persistence.`,
       },
     ],
