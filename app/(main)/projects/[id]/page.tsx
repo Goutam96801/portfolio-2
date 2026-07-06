@@ -73,20 +73,20 @@ const ProjectDetails = async ({ params }: Props) => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 opacity-0 animate-fadeInUp">
             {
               project.demo &&
-              <Link href={project.demo} target="_blank" className="group inline-flex items-center gap-2 bg-orange-400 text-black px-8 py-4 rounded-none font-medium hover:bg-green-400 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+              <a href={project.demo} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 bg-orange-400 text-black px-8 py-4 rounded-none font-medium hover:bg-green-400 transition-all duration-300 hover:scale-105 hover:shadow-lg">
                 <Play size={20} />
                 Demo Access
                 <ExternalLink size={18} />
-              </Link>
+              </a>
             }
 
-            <Link href={project.sourceCode} target="_blank" className="group inline-flex items-center gap-2 border border-black px-8 py-4 rounded-none font-medium bg-white hover:bg-black text-black hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg">
+            <a href={project.sourceCode} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 border border-black px-8 py-4 rounded-none font-medium bg-white hover:bg-black text-black hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4 group-hover:rotate-12 transition-transform duration-300">
                 <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
               </svg>
               Source Access
               <ExternalLink size={18} />
-            </Link>
+            </a>
           </div>
 
           {

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 
 const certificates = [
   {
@@ -76,9 +75,9 @@ export const Certification = () => {
                   <p className="text-xs text-stone-500">
                     {cert.subtitle}
                   </p>
-                  <Link href={cert.url} target="_blank" className="text-xs text-blue-500">
+                  <a href={cert.url} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-500">
                     Certificate
-                  </Link>
+                  </a>
                 </span>
 
               </figcaption>

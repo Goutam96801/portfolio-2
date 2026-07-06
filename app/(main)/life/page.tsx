@@ -169,7 +169,7 @@ export default function Life() {
             </p>
             <p style={{ opacity: 1, transform: 'none' }}>
               Eventually, I received an off-campus internship opportunity at Mono, and it
-              completely changed my direction. Working under <Link href="https://www.linkedin.com/in/shubhrohilla/" target="_blank" className='text-orange-500'>Shubh Rohilla</Link> sir helped me understand
+              completely changed my direction. Working under <a href="https://www.linkedin.com/in/shubhrohilla/" target="_blank" rel="noopener noreferrer" className='text-orange-500'>Shubh Rohilla</a> sir helped me understand
               real product thinking, ownership, and team collaboration. I'm genuinely
               thankful for his guidance, patience, and support during a phase where I was
               still figuring everything out.
