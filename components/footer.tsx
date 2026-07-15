@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import AdsenseAd from "@/components/adsense-ad";
 
 const Footer = () => {
     const [isEmailCopied, setIsEmailCopied] = useState(false);
@@ -29,7 +30,11 @@ const Footer = () => {
                     fill
                 />
                 <div className=" pt-4 md:pt-8 w-full relative z-10 mx-auto px-6">
-                    <div className=" max-w-350 flex items-start justify-between mx-auto">
+                    <div className="max-w-350 mx-auto">
+                        <div className="mb-6 flex justify-center">
+                            <AdsenseAd slot="1234567890" className="w-full max-w-[728px]" />
+                        </div>
+                        <div className="flex items-start justify-between">
                         <div className="max-w-md">
                             <a className="footer-brand inline-block text-xl font-bold leading-none tracking-tight text-[#21180f] transition-transform duration-300 hover:-translate-y-0.5 md:text-3xl lg:text-4xl" href="/">
                                 Goutam Choudhary
@@ -46,6 +51,7 @@ const Footer = () => {
                         </p>
                     </div>
                 </div>
+            </div>
             </div>
         </footer>
     )

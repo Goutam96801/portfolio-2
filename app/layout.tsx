@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     template: "%s | Goutam",
   },
   description: "A Software Developer",
+  other: {
+    "google-adsense-account": "ca-pub-1465231291661963",
+  },
 };
 
 export default function RootLayout({
@@ -49,6 +52,13 @@ export default function RootLayout({
       lang="en"
       className={`${kalam.variable} ${inter.variable} ${sora.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1465231291661963"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
         <PostHogProvider>
           <SettingsProvider>
