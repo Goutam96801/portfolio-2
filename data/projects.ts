@@ -27,6 +27,8 @@ export interface Project {
   coverImage: string;
 
   images: ProjectImage[];
+  /** Lettered screenshots (projecta/b/c…). Omit or empty to hide the gallery. */
+  galleryImages?: string[];
 
   description: string;
 
@@ -276,6 +278,809 @@ export const projects: Project[] = [
       provider: "gautamkumar96801@gmail.com",
       password: "12345678"
     },
+  },
+
+  {
+    id: "syntax",
+    title: "Syntax.AI",
+    subtitle:
+      "LeetCode-style practice platform with problem browser, Monaco IDE, playground, and community discuss.",
+    coverImage: "/images/syntax1.png",
+    galleryImages: ["/images/syntaxa.png", "/images/syntaxb.png"],
+
+    images: [
+      {
+        id: "syntax-landing",
+        image: "/images/syntax1.png",
+        label: "Marketing · Landing",
+        title: "Master the logic behind the code",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            The landing surface opens with an AI practice prompt — tell Syntax.AI
+            what you want to drill today, or jump straight into curated topic chips.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Roadmap-driven practice prompt on the home hero</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Quick topic chips for Two Sum, DP, graphs, and more</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Auth-ready nav into Problems, Contest, and Discuss</span>
+            </li>
+          </ul>
+        `,
+      },
+      {
+        id: "syntax-problems",
+        image: "/images/syntax2.png",
+        label: "Catalog · Problems",
+        title: "Browse, filter, and star your lists",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            A full problem library with topic tags, search, difficulty labels,
+            and custom lists — built for the daily solve loop.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Tag filters across arrays, DP, graphs, and more</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Smart lists, favourites, and daily calendar streak widget</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Search and shuffle across thousands of questions</span>
+            </li>
+          </ul>
+        `,
+      },
+      {
+        id: "syntax-workspace",
+        image: "/images/syntax3.png",
+        label: "Workspace · IDE",
+        title: "Read, code, run, submit",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            The problem workspace pairs the statement with Monaco — sample
+            tests, custom cases, Run, and Submit through a cloud judge.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Multi-language Monaco editor with starter templates</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Sample and custom testcases with Run / Submit</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Server-side judging via OnlineCompiler.io</span>
+            </li>
+          </ul>
+        `,
+      },
+      {
+        id: "syntax-discuss",
+        image: "/images/syntax4.png",
+        label: "Community · Discuss",
+        title: "Share solutions, ask anything",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            Discuss is the community layer — new threads, problem-linked posts,
+            likes, and views so solvers can learn out loud.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>All / General / Problem-linked thread filters</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>New thread composer with like, comment, and view counts</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Search and sort by newest for fast discovery</span>
+            </li>
+          </ul>
+        `,
+      },
+      {
+        id: "syntax-settings",
+        image: "/images/syntax5.png",
+        label: "Account · Settings",
+        title: "Points, privacy, and connected accounts",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            Account settings cover identity, OAuth connections, points, and the
+            danger zone — with streaks and rewards baked into the profile loop.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Email/password auth plus Google, GitHub, Apple, LinkedIn</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Points, subscription, privacy, and notification tabs</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Public profiles at /p/[username] with bio and socials</span>
+            </li>
+          </ul>
+        `,
+      },
+    ],
+
+    description: `
+      <div class="space-y-6">
+        <p class="text-lg md:text-xl text-neutral-800 leading-relaxed font-medium">
+          <span class="font-bold text-black">Syntax.AI</span> is an open-source,
+          LeetCode-style practice platform — discover problems, solve in the
+          browser, and discuss approaches with the community.
+        </p>
+
+        <p class="text-base text-neutral-700 font-medium leading-relaxed">
+          Built with Next.js and Convex, it covers the full practice loop:
+          auth, a searchable problem catalog, Monaco workspace with cloud
+          judging, a free-form playground, public profiles, and daily points
+          and streaks.
+        </p>
+
+        <div class="pt-2">
+          <h3 class="text-xs uppercase tracking-[0.2em] text-orange-500 font-bold mb-4">
+            Core features
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
+            <div class="border-l-2 border-orange-400 pl-4">
+              <h4 class="font-bold text-black mb-1">Problem workspace</h4>
+              <p class="text-sm text-neutral-700 font-medium leading-relaxed">
+                Monaco editor, sample/custom tests, Run and Submit through
+                OnlineCompiler.io.
+              </p>
+            </div>
+            <div class="border-l-2 border-orange-400 pl-4">
+              <h4 class="font-bold text-black mb-1">Smart problem lists</h4>
+              <p class="text-sm text-neutral-700 font-medium leading-relaxed">
+                Browse by tags and difficulty, star custom lists, and track
+                daily streaks.
+              </p>
+            </div>
+            <div class="border-l-2 border-orange-400 pl-4">
+              <h4 class="font-bold text-black mb-1">Discuss + playground</h4>
+              <p class="text-sm text-neutral-700 font-medium leading-relaxed">
+                Community threads for solutions, plus a multi-language
+                playground outside any single problem.
+              </p>
+            </div>
+            <div class="border-l-2 border-orange-400 pl-4">
+              <h4 class="font-bold text-black mb-1">Convex-backed realtime</h4>
+              <p class="text-sm text-neutral-700 font-medium leading-relaxed">
+                Auth, DB, file storage, and judge actions live in Convex —
+                deployed with Vercel.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    `,
+
+    sourceCode: "https://github.com/Goutam96801/lc-clone",
+    demo: "https://lc-clone-vert.vercel.app",
+    accentColor: "#F59E0B",
+
+    techStack: [
+      {
+        name: "Next.js",
+        icon: "/icons/nextjs.svg",
+        role: "Full-stack framework",
+        description: `App Router pages for landing, problems, playground, discuss, profiles, and settings — one deployable frontend.`,
+      },
+      {
+        name: "TypeScript",
+        icon: "/icons/typescript.svg",
+        role: "Type-safe foundation",
+        description: `End-to-end typing across feature UI, Convex validators, and the judge contract.`,
+      },
+      {
+        name: "Convex",
+        icon: "/icons/zap.svg",
+        role: "Backend platform",
+        description: `Database, auth, actions, and file storage — problems, submissions, points, and profiles live here.`,
+      },
+      {
+        name: "Monaco Editor",
+        icon: "/icons/vs-code.svg",
+        role: "In-browser IDE",
+        description: `VS Code-grade editing for multi-language problem solving and the free-form playground.`,
+      },
+      {
+        name: "Tailwind CSS",
+        icon: "/icons/javascript.svg",
+        role: "UI system",
+        description: `Tailwind 4 + shadcn/ui power the dark coding-practice chrome and dense problem tables.`,
+      },
+    ],
+  },
+
+  {
+    id: "finnest",
+    title: "FinNest",
+    subtitle:
+      "Mobile personal finance nest for balances, stats, accounts, subscriptions, and transaction tracking.",
+    coverImage: "/images/finnest1.jpeg",
+
+    images: [
+      {
+        id: "finnest-home",
+        image: "/images/finnest1.jpeg",
+        label: "Tabs · Home",
+        title: "Your money nest at a glance",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            Home opens on total balance, income vs expense, upcoming
+            subscriptions, and recent transactions — with quick add always
+            one tap away.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Swipeable balance cards across total and per-account</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Upcoming subscriptions strip with pay / snooze / skip</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Recent transactions plus notifications and global search</span>
+            </li>
+          </ul>
+        `,
+      },
+      {
+        id: "finnest-statistics",
+        image: "/images/finnest2.jpeg",
+        label: "Tabs · Statistics",
+        title: "See the shape of your spending",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            Statistics breaks spend into weekly, monthly, and yearly views
+            with overview bars and expense trend lines per account scope.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Weekly / monthly / yearly period switcher</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>All-accounts or single-account scoped charts</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Overview bars and expense trend line charts</span>
+            </li>
+          </ul>
+        `,
+      },
+      {
+        id: "finnest-accounts",
+        image: "/images/finnest3.jpeg",
+        label: "Tabs · Accounts",
+        title: "Every wallet in one place",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            Accounts lists every linked wallet with bank mask, balance, and a
+            Primary badge so transfers and totals stay honest.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Multi-account list with bank details and balances</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Primary account badge and add-account flow</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Total balance rollup across every wallet</span>
+            </li>
+          </ul>
+        `,
+      },
+      {
+        id: "finnest-profile",
+        image: "/images/finnest4.jpeg",
+        label: "Tabs · Profile",
+        title: "Identity and shortcuts",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            Profile is the hub for edit profile, settings, privacy policy, and
+            logout — kept minimal so the money surfaces stay primary.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Avatar, name, and email at a glance</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Quick links into settings and privacy policy</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>One-tap logout when you're done</span>
+            </li>
+          </ul>
+        `,
+      },
+      {
+        id: "finnest-settings",
+        image: "/images/finnest5.jpeg",
+        label: "Settings · Preferences",
+        title: "Balances, alerts, and exports",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            Settings covers hide-balances, week start, subscription reminders,
+            low-balance alerts, CSV/PDF export, and account credentials.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Hide balances by default when the app opens</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Subscription reminders and low-balance threshold alerts</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Export transactions as CSV or PDF</span>
+            </li>
+          </ul>
+        `,
+      },
+      {
+        id: "finnest-update-profile",
+        image: "/images/finnest6.jpeg",
+        label: "Profile · Edit",
+        title: "Name, timezone, currency",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            Update profile keeps identity local — avatar, display name,
+            timezone, and currency for INR-first money formatting.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Avatar upload with inline edit affordance</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Timezone picker for reminder scheduling</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Currency preference (INR and beyond)</span>
+            </li>
+          </ul>
+        `,
+      },
+      {
+        id: "finnest-transactions",
+        image: "/images/finnest7.jpeg",
+        label: "Ledger · Transactions",
+        title: "Searchable expense history",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            The full ledger supports search by note or category plus filters
+            for type, account, and date — expense, income, and transfers.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Expense, income, and transfer transaction types</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Search notes/categories with type, account, date filters</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Quick-add from the green + action</span>
+            </li>
+          </ul>
+        `,
+      },
+      {
+        id: "finnest-notifications",
+        image: "/images/finnest8.jpeg",
+        label: "System · Notifications",
+        title: "Due soon, never surprise",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            Notifications surface subscription dues and reminder confirmations
+            so Wifi, recharges, and bills get handled before they bite.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Due today / due tomorrow subscription alerts</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Unread dots with mark-all-read control</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Reminder-set confirmations for future dues</span>
+            </li>
+          </ul>
+        `,
+      },
+    ],
+
+    description: `
+      <div class="space-y-6">
+        <p class="text-lg md:text-xl text-neutral-800 leading-relaxed font-medium">
+          <span class="font-bold text-black">FinNest</span> is a mobile personal
+          finance nest — one place to see balances, understand spending, manage
+          accounts, and stay ahead of subscriptions.
+        </p>
+
+        <p class="text-base text-neutral-700 font-medium leading-relaxed">
+          Built with Expo and Supabase, it covers the daily money loop: swipeable
+          home cards, statistics, multi-account wallets with a primary badge,
+          expense/income/transfer ledger, recurring subscription reminders, and
+          privacy-minded settings like hide-balances and low-balance alerts.
+        </p>
+
+        <div class="pt-2">
+          <h3 class="text-xs uppercase tracking-[0.2em] text-orange-500 font-bold mb-4">
+            What makes it different
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
+            <div class="border-l-2 border-orange-400 pl-4">
+              <h4 class="font-bold text-black mb-1">Subscriptions that act</h4>
+              <p class="text-sm text-neutral-700 font-medium leading-relaxed">
+                Paid creates a transaction; snooze and skip keep the strip honest.
+              </p>
+            </div>
+            <div class="border-l-2 border-orange-400 pl-4">
+              <h4 class="font-bold text-black mb-1">Multi-account truth</h4>
+              <p class="text-sm text-neutral-700 font-medium leading-relaxed">
+                Primary wallets, transfers between accounts, and totals that
+                roll up correctly.
+              </p>
+            </div>
+            <div class="border-l-2 border-orange-400 pl-4">
+              <h4 class="font-bold text-black mb-1">Stats you can scope</h4>
+              <p class="text-sm text-neutral-700 font-medium leading-relaxed">
+                Weekly to yearly charts filtered by all accounts or one wallet.
+              </p>
+            </div>
+            <div class="border-l-2 border-orange-400 pl-4">
+              <h4 class="font-bold text-black mb-1">Native, dark, fast</h4>
+              <p class="text-sm text-neutral-700 font-medium leading-relaxed">
+                Expo Router + NativeWind with Reanimated motion and Supabase
+                auth/data.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    `,
+
+    sourceCode: "https://github.com/Goutam96801/finNest",
+    accentColor: "#A3E635",
+
+    techStack: [
+      {
+        name: "Expo",
+        icon: "/icons/expo.svg",
+        role: "Cross-platform mobile shell",
+        description: `Expo Router, notifications, image picker, and EAS-ready builds for iOS and Android.`,
+      },
+      {
+        name: "React Native",
+        icon: "/icons/reactjs.svg",
+        role: "Native UI runtime",
+        description: `Gesture-driven tabs, bottom sheets, and Reanimated transitions for the money surfaces.`,
+      },
+      {
+        name: "TypeScript",
+        icon: "/icons/typescript.svg",
+        role: "Type-safe foundation",
+        description: `Shared types across accounts, transactions, subscriptions, and notification services.`,
+      },
+      {
+        name: "NativeWind",
+        icon: "/icons/nativewind.svg",
+        role: "Tailwind for native",
+        description: `Utility-first styling keeps the dark lime-accent UI consistent across screens.`,
+      },
+      {
+        name: "Supabase",
+        icon: "/icons/supabase.svg",
+        role: "Backend platform",
+        description: `Auth, Postgres, and storage for accounts, ledger rows, subscriptions, and profiles.`,
+      },
+    ],
+  },
+
+  {
+    id: "zenvy",
+    title: "Zenvy",
+    subtitle:
+      "Realtime chat platform with DMs, Circles, calls, and deep profile appearance & privacy controls.",
+    coverImage: "/images/zenvy1.png",
+    galleryImages: [
+      "/images/zenvya.png",
+      "/images/zenvyb.png",
+      "/images/zenvyc.png",
+      "/images/zenvyd.png",
+      "/images/zenvye.png",
+    ],
+
+    images: [
+      {
+        id: "zenvy-dm",
+        image: "/images/zenvy1.png",
+        label: "Chat · Direct messages",
+        title: "Conversations that feel alive",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            Direct messages with read receipts, emoji reactions, voice input,
+            and a starfield canvas — presence without the noise.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Realtime DMs with delivery and read receipts</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Emoji reactions and gradient chat bubbles</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Search people and jump between conversations</span>
+            </li>
+          </ul>
+        `,
+      },
+      {
+        id: "zenvy-circles",
+        image: "/images/zenvy2.png",
+        label: "Workspace · Circles",
+        title: "Spaces with a lifespan",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            Circles are private group spaces — member counts, countdown
+            lifespans, and a Start Call button when the room is ready.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Circle list with search and invite affordances</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Member count and remaining lifespan on every room</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Start Call entry point for voice/video sessions</span>
+            </li>
+          </ul>
+        `,
+      },
+      {
+        id: "zenvy-create-circle",
+        image: "/images/zenvy3.png",
+        label: "Circles · Create",
+        title: "Set the tone before anyone joins",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            Create circle captures name, description, type, visibility, and
+            lifespan so spaces stay intentional from the first invite.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Standard group chat type with private invite-only visibility</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Configurable lifespan in hours or days</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Roles for admin, co-admin, and member</span>
+            </li>
+          </ul>
+        `,
+      },
+      {
+        id: "zenvy-profile-settings",
+        image: "/images/zenvy4.png",
+        label: "Settings · Profile",
+        title: "Identity you control",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            Profile settings hold display name, username, bio, email, and
+            photo — the public face of every DM and Circle.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Edit display name, username, and bio</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Change photo without leaving settings</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Sidebar jump to appearance and privacy</span>
+            </li>
+          </ul>
+        `,
+      },
+      {
+        id: "zenvy-appearance",
+        image: "/images/zenvy5.png",
+        label: "Settings · Appearance",
+        title: "Theme, type, and chat color",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            Appearance lets each person tune light/dark/system, font size,
+            solid or gradient bubble colors, and live preview the result.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Light, dark, and system theme cards</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Solid + gradient chat color pickers with custom swatches</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Live bubble preview as you customize</span>
+            </li>
+          </ul>
+        `,
+      },
+      {
+        id: "zenvy-privacy",
+        image: "/images/zenvy6.png",
+        label: "Settings · Privacy",
+        title: "Presence on your terms",
+        description: `
+          <p class="text-neutral-700 font-medium leading-relaxed">
+            Privacy toggles online status, last seen, typing, read receipts,
+            and notifications — plus a master switch for all presence signals.
+          </p>
+          <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Master show/hide for all presence activity</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Per-signal controls for online, last seen, typing, receipts</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+              <span>Notification preference toggle for messages and mentions</span>
+            </li>
+          </ul>
+        `,
+      },
+    ],
+
+    description: `
+      <div class="space-y-6">
+        <p class="text-lg md:text-xl text-neutral-800 leading-relaxed font-medium">
+          <span class="font-bold text-black">Zenvy</span> is a realtime chat
+          platform built around DMs and Circles — private spaces with lifespan,
+          roles, calls, and appearance you actually own.
+        </p>
+
+        <p class="text-base text-neutral-700 font-medium leading-relaxed">
+          Powered by Next.js and Supabase Auth, Realtime, and Postgres, Zenvy
+          ships message reactions, read receipts, circle creation with
+          visibility and lifespan, Start Call entry points, and settings for
+          profile, appearance, and granular privacy.
+        </p>
+
+        <div class="pt-2">
+          <h3 class="text-xs uppercase tracking-[0.2em] text-orange-500 font-bold mb-4">
+            Core features
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
+            <div class="border-l-2 border-orange-400 pl-4">
+              <h4 class="font-bold text-black mb-1">DMs that feel native</h4>
+              <p class="text-sm text-neutral-700 font-medium leading-relaxed">
+                Realtime messaging with receipts, reactions, and custom bubble
+                colors.
+              </p>
+            </div>
+            <div class="border-l-2 border-orange-400 pl-4">
+              <h4 class="font-bold text-black mb-1">Circles with intent</h4>
+              <p class="text-sm text-neutral-700 font-medium leading-relaxed">
+                Private groups with roles, invite flow, and optional lifespan
+                countdowns.
+              </p>
+            </div>
+            <div class="border-l-2 border-orange-400 pl-4">
+              <h4 class="font-bold text-black mb-1">Appearance playground</h4>
+              <p class="text-sm text-neutral-700 font-medium leading-relaxed">
+                Themes, font sizes, solid and gradient chat colors with live
+                preview.
+              </p>
+            </div>
+            <div class="border-l-2 border-orange-400 pl-4">
+              <h4 class="font-bold text-black mb-1">Privacy dials</h4>
+              <p class="text-sm text-neutral-700 font-medium leading-relaxed">
+                Online, last seen, typing, receipts, and notifications — each
+                toggleable.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    `,
+
+    sourceCode: "https://github.com/Goutam96801/Zenvy",
+    demo: "https://zenvy-six.vercel.app",
+    accentColor: "#A855F7",
+
+    techStack: [
+      {
+        name: "Next.js",
+        icon: "/icons/nextjs.svg",
+        role: "Full-stack framework",
+        description: `App Router for chat, circles, auth, and settings — server components where they help, client where realtime needs them.`,
+      },
+      {
+        name: "TypeScript",
+        icon: "/icons/typescript.svg",
+        role: "Type-safe foundation",
+        description: `Shared types across profiles, circles, messages, and privacy preferences.`,
+      },
+      {
+        name: "Supabase",
+        icon: "/icons/supabase.svg",
+        role: "Backend platform",
+        description: `Auth, Postgres with RLS, Realtime channels, and storage for avatars and chat media.`,
+      },
+      {
+        name: "TanStack Query",
+        icon: "/icons/reactjs.svg",
+        role: "Server-state cache",
+        description: `Fetches and caches profile, circle, and conversation state while realtime patches keep the UI fresh.`,
+      },
+      {
+        name: "React",
+        icon: "/icons/reactjs.svg",
+        role: "UI runtime",
+        description: `Client islands for chat panes, settings sheets, and optimistic message sends on top of the App Router.`,
+      },
+    ],
   },
 
   {
