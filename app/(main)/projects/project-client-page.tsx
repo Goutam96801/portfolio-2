@@ -24,6 +24,9 @@ type ContributionDay = {
 
 const projectMeta: Record<string, { categoryLabel: string }> = {
   clarity: { categoryLabel: 'Realtime · Productivity' },
+  syntax: { categoryLabel: 'Web · Coding Practice' },
+  finnest: { categoryLabel: 'Mobile · Personal Finance' },
+  zenvy: { categoryLabel: 'Web · Social Chat' },
   uicollab: { categoryLabel: 'Open Source · UI Platform' },
   truefeedback: { categoryLabel: 'AI · Anonymous Messaging' },
   whoami: { categoryLabel: 'Mobile · Anonymous Social' },

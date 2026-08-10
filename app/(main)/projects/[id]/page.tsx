@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import DemoCredentials from "@/components/demo-credentials";
+import ProjectImageGallery from "@/components/module/project-image-gallery";
 
 export async function generateMetadata(
   { params }: Props
@@ -130,7 +131,14 @@ const ProjectDetails = async ({ params }: Props) => {
           />
         </section>
 
-        {/* Image gallery — alternating */}
+        {project.galleryImages && project.galleryImages.length > 0 && (
+          <ProjectImageGallery
+            images={project.galleryImages}
+            title={project.title}
+          />
+        )}
+
+        {project.images.length > 0 && (
         <section className="mb-20 md:mb-24 space-y-12 md:space-y-16">
           <div className="flex items-center gap-3 mb-2">
             <span className="inline-block w-10 h-1 bg-orange-400"></span>
@@ -182,6 +190,7 @@ const ProjectDetails = async ({ params }: Props) => {
             );
           })}
         </section>
+        )}
 
         {/* Tech stack */}
         <section className="mb-20 md:mb-24">
