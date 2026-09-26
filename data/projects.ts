@@ -41,6 +41,298 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+
+  {
+    id: "pathshala",
+    title: "Pathshala",
+    subtitle:
+      "Multi-tenant school management — students, staff, attendance, fees, learning, and an AI assistant in one calm workspace.",
+    coverImage: "/images/pathshala1.png",
+    // galleryImages: ["/images/pathshalaa.png", "/images/pathshalab.png"],
+
+    images: [
+      {
+        id: "pathshala-landing",
+        image: "/images/pathshala1.png",
+        label: "Marketing · Landing",
+        title: "School management, in rhythm",
+        description: `
+        <p class="text-neutral-700 font-medium leading-relaxed">
+          A branded landing with trial CTA and live plan pricing — the public
+          face of a product built for campuses, not another generic admin tool.
+        </p>
+        <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>14-day free trial onboarding for new schools</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>Subscription plans wired to live billing data</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>Role-aware login into admin, staff, or student portals</span>
+          </li>
+        </ul>
+      `,
+      },
+      {
+        id: "pathshala-dashboard",
+        image: "/images/pathshala2.png",
+        label: "Admin · Dashboard",
+        title: "Campus overview at a glance",
+        description: `
+        <p class="text-neutral-700 font-medium leading-relaxed">
+          Permission-aware dashboards surface attendance, fees, and people
+          stats so principals and staff only see what they're allowed to act on.
+        </p>
+        <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>KPI cards with attendance and fee charts</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>Staff tools filtered by real permission flags</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>Separate workspaces for admin, employees, and students</span>
+          </li>
+        </ul>
+      `,
+      },
+      {
+        id: "pathshala-people",
+        image: "/images/pathshala3.png",
+        label: "People · Students & classes",
+        title: "Records that stay connected",
+        description: `
+        <p class="text-neutral-700 font-medium leading-relaxed">
+          Create students and staff with SIDs and temporary passwords, assign
+          classes, and keep guardians and teach/fees permissions in one place.
+        </p>
+        <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>Student and staff provisioning via Edge Functions</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>Class rosters with academic-year context</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>Fine-grained staff permissions (teach, fees, settings…)</span>
+          </li>
+        </ul>
+      `,
+      },
+      {
+        id: "pathshala-attendance",
+        image: "/images/pathshala4.png",
+        label: "Daily · Attendance",
+        title: "Mark the day, not the paperwork",
+        description: `
+        <p class="text-neutral-700 font-medium leading-relaxed">
+          Teachers mark present / absent / late by class and date; students
+          see their own history and month calendar on the portal.
+        </p>
+        <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>Class-day attendance with bulk mark helpers</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>Student month summary, trends, and mini calendar</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>RLS-scoped so each school only sees its own data</span>
+          </li>
+        </ul>
+      `,
+      },
+      {
+        id: "pathshala-fees",
+        image: "/images/pathshala5.png",
+        label: "Money · Fees",
+        title: "Dues without the chase",
+        description: `
+        <p class="text-neutral-700 font-medium leading-relaxed">
+          Fee structures, invoices, and payments with a clear outstanding view —
+          for office staff collecting and for students checking their own dues.
+        </p>
+        <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>Invoice and payment ledger per student</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>Collect / manage gated by staff permissions</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>Student self-serve fees portal</span>
+          </li>
+        </ul>
+      `,
+      },
+      {
+        id: "pathshala-learning",
+        image: "/images/pathshala6.png",
+        label: "Learning · Quizzes & assignments",
+        title: "Teach, assign, score — once",
+        description: `
+        <p class="text-neutral-700 font-medium leading-relaxed">
+          Staff with teach permission create MCQ / true-false quizzes (one
+          attempt, auto-scored) and text assignments they grade themselves.
+          Only the creator manages each item.
+        </p>
+        <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>Assign to a class or individual students</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>Server-side quiz scoring RPCs — one attempt enforced</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>Student Learning page plus dashboard to-dos</span>
+          </li>
+        </ul>
+      `,
+      },
+      {
+        id: "pathshala-luxy",
+        image: "/images/pathshala7.png",
+        label: "AI · Luxy",
+        title: "School assistant that stays in scope",
+        description: `
+        <p class="text-neutral-700 font-medium leading-relaxed">
+          Luxy chats with admin, staff, and students inside DB-scoped threads —
+          tool-calling for campus actions with confirmation guards so the model
+          doesn't freestyle over school data.
+        </p>
+        <ul class="mt-4 space-y-2.5 text-neutral-800 font-medium">
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>Streaming chat UI with thinking and confirm flows</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>Role-aware tools for classes, students, and more</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-2 inline-block w-1.5 h-1.5 bg-orange-400 rounded-full shrink-0"></span>
+            <span>Chats isolated per account in Postgres</span>
+          </li>
+        </ul>
+      `,
+      },
+    ],
+
+    description: `
+    <div class="space-y-6">
+      <p class="text-lg md:text-xl text-neutral-800 leading-relaxed font-medium">
+        <span class="font-bold text-black">Pathshala</span> is a multi-tenant
+        school management system for everyday campus work — people, attendance,
+        fees, learning, billing, and an in-product AI assistant — in one calm place.
+      </p>
+
+      <p class="text-base text-neutral-700 font-medium leading-relaxed">
+        Schools register, trial a plan, and run separate portals for admins,
+        staff, and students. Postgres + Supabase RLS keep every campus isolated;
+        permission flags decide who can teach, collect fees, or manage settings.
+        Learning adds one-attempt quizzes and creator-graded assignments; Luxy
+        brings tool-calling chat that stays scoped to the signed-in role.
+      </p>
+
+      <div class="pt-2">
+        <h3 class="text-xs uppercase tracking-[0.2em] text-orange-500 font-bold mb-4">
+          What makes it different
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
+          <div class="border-l-2 border-orange-400 pl-4">
+            <h4 class="font-bold text-black mb-1">Multi-tenant by design</h4>
+            <p class="text-sm text-neutral-700 font-medium leading-relaxed">
+              School-scoped auth and row-level security — one deploy, many
+              campuses, no data bleed.
+            </p>
+          </div>
+          <div class="border-l-2 border-orange-400 pl-4">
+            <h4 class="font-bold text-black mb-1">Roles that match real schools</h4>
+            <p class="text-sm text-neutral-700 font-medium leading-relaxed">
+              Admin, employee, and student apps with fine-grained staff
+              permissions instead of a single god-mode dashboard.
+            </p>
+          </div>
+          <div class="border-l-2 border-orange-400 pl-4">
+            <h4 class="font-bold text-black mb-1">Learning + AI in-product</h4>
+            <p class="text-sm text-neutral-700 font-medium leading-relaxed">
+              One-attempt auto-scored quizzes, creator-graded assignments,
+              and Luxy with confirmation-guarded tools.
+            </p>
+          </div>
+          <div class="border-l-2 border-orange-400 pl-4">
+            <h4 class="font-bold text-black mb-1">Subscriptions built in</h4>
+            <p class="text-sm text-neutral-700 font-medium leading-relaxed">
+              Trial → plan upgrade with Razorpay checkout so the product can
+              actually sell itself.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
+
+    sourceCode: "https://github.com/Goutam96801/pathshala",
+    demo: "https://onpathshala.vercel.app/",
+    accentColor: "#8B7355",
+
+    techStack: [
+      {
+        name: "Next.js",
+        icon: "/icons/nextjs.svg",
+        role: "Full-stack framework",
+        description: `App Router for landing, admin / emp / std portals, billing, and API routes — one codebase for marketing and the product.`,
+      },
+      {
+        name: "TypeScript",
+        icon: "/icons/typescript.svg",
+        role: "Type-safe foundation",
+        description: `Shared types across learning items, fees, attendance, staff permissions, and Luxy tool contracts.`,
+      },
+      {
+        name: "Supabase",
+        icon: "/icons/supabase.svg",
+        role: "Backend platform",
+        description: `Auth, Postgres, Edge Functions (create-student / create-staff), and RLS policies that enforce school + role boundaries.`,
+      },
+      {
+        name: "PostgreSQL",
+        icon: "/icons/postgresql.svg",
+        role: "Relational database",
+        description: `Schema-first tables for people, classes, attendance, fees, subscriptions, learning, and Luxy chats — with SECURITY DEFINER RPCs for quiz scoring.`,
+      },
+      {
+        name: "TanStack Query",
+        icon: "/icons/tanstack.svg",
+        role: "Server-state cache",
+        description: `Client caching for dashboards and management tables so attendance, fees, and learning stay snappy after mutations.`,
+      },
+    ],
+    credentials: {
+      provider: "admin@demo.pathshala.local",
+      password: "SeedPass123!",
+    },
+  },
+
   {
     id: "clarity",
     title: "CLARITY.",
