@@ -10,6 +10,7 @@ import { LoaderProvider } from "@/providers/LoaderProvider";
 import { SettingsProvider } from "@/providers/SettingsProvider";
 import { PostHogProvider } from "@/providers/PosthogProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import AboutChat from "@/components/about-chat/about-chat";
 
 const kalam = Kalam({
   weight: ["400", "700"],
@@ -75,6 +76,7 @@ export default function RootLayout({
                 <GlobalClickSound />
                 <ContextMenu />
                 <CursorWrapper />
+                <AboutChat />
                 {children}
               </LoaderProvider>
             </SettingsProvider>
