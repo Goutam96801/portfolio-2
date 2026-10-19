@@ -3,13 +3,13 @@
 import Image from "next/image";
 
 const photos = [
-  { id: 1, src: "/gallary/profile1.jpeg", caption: "That's me", alt: "A moment", rotate: -2.5, tape: "left", landscape: false },
+  { id: 1, src: "/gallary/profile1.webp", caption: "That's me", alt: "A moment", rotate: -2.5, tape: "left", landscape: false },
   { id: 2, src: "/gallary/vaishno-devi.jpeg", caption: "Mata Vaishno Devi", alt: "A moment", rotate: -1, tape: "center", landscape: false },
   { id: 3, src: "/gallary/personal2.jpeg", caption: "That's me", alt: "A moment", rotate: 1, tape: "right", landscape: false },
 
   // landscape images
   { id: 4, src: "/gallary/vaishno-devi1.jpeg", caption: "Mata Vaishno Devi", alt: "A moment", rotate: -2, tape: "center", landscape: true },
-  { id: 5, src: "/gallary/journey-start.jpeg", caption: "Circle", alt: "A moment", rotate: 2.5, tape: "left", landscape: true },
+  { id: 5, src: "/gallary/journey-start.jpeg", caption: "with my best friend", alt: "A moment", rotate: 2.5, tape: "left", landscape: true },
   { id: 6, src: "/gallary/golden-temple.jpeg", caption: "Golden Temple", alt: "A moment", rotate: 1.5, tape: "right", landscape: true },
 
 ];
@@ -31,7 +31,7 @@ export const Photos = () => {
           </h2>
         </div>
       </div>
-      <div className="w-175 rounded-2xl border border-stone-200 bg-white/90 p-8 shadow-xl backdrop-blur-sm">
+      <div className="w-175 rounded-2xl border border-stone-200 bg-surface/90 p-8 shadow-xl backdrop-blur-sm">
 
 
         <div className="grid grid-cols-3 gap-6">
@@ -53,10 +53,10 @@ export const Photos = () => {
                 aria-hidden="true"
               />
 
-              <div className="space-y-2 bg-white p-2 pb-3 shadow-md">
+              <div className="space-y-2 bg-surface p-2 pb-3 shadow-md">
                 <div
                   className={`
-            relative overflow-hidden bg-neutral-100
+            relative overflow-hidden bg-surface-muted
             ${photo.landscape ? "aspect-video" : "aspect-square"}
           `}
                 >

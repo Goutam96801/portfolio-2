@@ -5,6 +5,7 @@ import type { PointerEvent as ReactPointerEvent } from "react";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
+import ThemeToggle from "@/components/theme-toggle";
 import { Certification } from "./certification";
 import { Photos } from "./photos";
 import { Experiences } from "./experiences";
@@ -162,34 +163,37 @@ export function PlaygroundCanvas() {
   };
 
   return (
-    <div className="flex flex-col h-dvh overflow-hidden bg-[#faf6ef]">
+    <div className="flex flex-col h-dvh overflow-hidden bg-page">
       <header className="fixed left-0 right-0 top-0 z-50 px-4 py-3 md:px-6 md:py-4 pointer-events-none">
         <div className="mx-auto flex max-w-7xl items-center justify-between pointer-events-auto">
           <button
-            className="group flex items-center gap-2 rounded-full border border-stone-200 bg-white/95 px-3 py-2 shadow-md backdrop-blur-sm transition-all hover:shadow-lg md:px-4"
+            className="group flex items-center gap-2 rounded-full border border-line/30 bg-surface/95 px-3 py-2 shadow-md backdrop-blur-sm transition-all hover:shadow-lg md:px-4"
             onClick={() => router.back()}
           >
             <ArrowLeft size={15} />
-            <span className="text-sm font-medium text-stone-700">Back</span>
+            <span className="text-sm font-medium text-ink-soft">Back</span>
           </button>
-          <div className="flex items-center gap-2 rounded-full border border-stone-200 bg-white/95 px-3 py-2 shadow-md backdrop-blur-sm md:px-4">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-4 w-4 text-yellow-500"
-            >
-              <path d="M12 3l2 7h7l-5.5 4.5L17 21l-5-4-5 4 1.5-6.5L3 10h7l2-7z" />
-              <circle cx="6" cy="6" r="1" fill="currentColor" />
-              <circle cx="18" cy="5" r="1" fill="currentColor" />
-              <circle cx="19" cy="18" r="1" fill="currentColor" />
-            </svg>
-            <span className="text-sm font-medium text-stone-700">Playground</span>
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 rounded-full border border-line/30 bg-surface/95 px-3 py-2 shadow-md backdrop-blur-sm md:px-4">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-4 w-4 text-yellow-500"
+              >
+                <path d="M12 3l2 7h7l-5.5 4.5L17 21l-5-4-5 4 1.5-6.5L3 10h7l2-7z" />
+                <circle cx="6" cy="6" r="1" fill="currentColor" />
+                <circle cx="18" cy="5" r="1" fill="currentColor" />
+                <circle cx="19" cy="18" r="1" fill="currentColor" />
+              </svg>
+              <span className="text-sm font-medium text-ink-soft">Playground</span>
+            </div>
+            <ThemeToggle className="!rounded-full size-9 shadow-md" />
           </div>
         </div>
       </header>
@@ -206,7 +210,7 @@ export function PlaygroundCanvas() {
         )}
         style={{
           backgroundImage:
-            "radial-gradient(circle, rgba(0, 0, 0, 0.18) 1px, transparent 1px)",
+            "radial-gradient(circle, var(--page-dot) 1px, transparent 1px)",
           backgroundSize: "24px 24px",
           backgroundPosition: `${pan.x}px ${pan.y}px`,
         }}
@@ -220,11 +224,11 @@ export function PlaygroundCanvas() {
           }}
         >
           <div className="absolute left-12.5 top-30">
-            <div className="w-64 rounded-xl border-2 border-stone-200 bg-white p-5 shadow-lg">
-              <h3 className="mb-2 font-handwritten text-lg text-stone-800">
+            <div className="w-64 rounded-xl border-2 border-line/30 bg-surface p-5 shadow-lg">
+              <h3 className="mb-2 font-handwritten text-lg text-ink">
                 Welcome!
               </h3>
-              <p className="text-sm leading-relaxed text-stone-600">
+              <p className="text-sm leading-relaxed text-ink-muted">
                 Drag to pan. Scroll or pinch to zoom.
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
@@ -248,12 +252,12 @@ export function PlaygroundCanvas() {
       </div>
 
       <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-        <div className="flex items-center gap-1.5 px-3 py-2.5 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border border-stone-200 pointer-events-auto">
+        <div className="flex items-center gap-1.5 px-3 py-2.5 bg-surface/95 backdrop-blur-md rounded-2xl shadow-lg border border-line/30 pointer-events-auto">
             <button
               type="button"
               onClick={zoomOut}
               disabled={zoom <= MIN_ZOOM}
-              className="p-2 hover:bg-stone-100 rounded-xl transition-colors disabled:opacity-40 disabled:hover:bg-transparent disabled:cursor-not-allowed"
+              className="p-2 hover:bg-surface-muted rounded-xl transition-colors disabled:opacity-40 disabled:hover:bg-transparent disabled:cursor-not-allowed"
               title="Zoom out"
             >
               <svg
@@ -266,15 +270,15 @@ export function PlaygroundCanvas() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="w-4 h-4 text-stone-600"
+                className="w-4 h-4 text-ink-muted"
               >
                 <circle cx="11" cy="11" r="8" />
                 <line x1="21" x2="16.65" y1="21" y2="16.65" />
                 <line x1="8" x2="14" y1="11" y2="11" />
               </svg>
             </button>
-            <div className="px-2.5 py-1 bg-stone-100 rounded-lg min-w-12 text-center">
-              <span className="text-xs font-mono font-medium text-stone-600">
+            <div className="px-2.5 py-1 bg-surface-muted rounded-lg min-w-12 text-center">
+              <span className="text-xs font-mono font-medium text-ink-muted">
                 {Math.round(zoom * 100)}%
               </span>
             </div>
@@ -282,7 +286,7 @@ export function PlaygroundCanvas() {
               type="button"
               onClick={zoomIn}
               disabled={zoom >= MAX_ZOOM}
-              className="p-2 hover:bg-stone-100 rounded-xl transition-colors disabled:opacity-40 disabled:hover:bg-transparent disabled:cursor-not-allowed"
+              className="p-2 hover:bg-surface-muted rounded-xl transition-colors disabled:opacity-40 disabled:hover:bg-transparent disabled:cursor-not-allowed"
               title="Zoom in"
             >
               <svg
@@ -295,7 +299,7 @@ export function PlaygroundCanvas() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="w-4 h-4 text-stone-600"
+                className="w-4 h-4 text-ink-muted"
               >
                 <circle cx="11" cy="11" r="8" />
                 <line x1="21" x2="16.65" y1="21" y2="16.65" />
@@ -303,11 +307,11 @@ export function PlaygroundCanvas() {
                 <line x1="8" x2="14" y1="11" y2="11" />
               </svg>
             </button>
-            <div className="w-px h-5 bg-stone-200 mx-1" />
+            <div className="w-px h-5 bg-line/30 mx-1" />
             <button
               type="button"
               onClick={resetView}
-              className="p-2 hover:bg-stone-100 rounded-xl transition-colors"
+              className="p-2 hover:bg-surface-muted rounded-xl transition-colors"
               title="Reset view"
             >
               <svg
@@ -320,7 +324,7 @@ export function PlaygroundCanvas() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="w-4 h-4 text-stone-600"
+                className="w-4 h-4 text-ink-muted"
               >
                 <path d="M15 3h6v6" />
                 <path d="m21 3-7 7" />
@@ -328,7 +332,7 @@ export function PlaygroundCanvas() {
                 <path d="M9 21H3v-6" />
               </svg>
             </button>
-            <div className="w-px h-5 bg-stone-200 mx-1" />
+            <div className="w-px h-5 bg-line/30 mx-1" />
             <div className="flex items-center gap-1">
               <button
                 type="button"
@@ -337,7 +341,7 @@ export function PlaygroundCanvas() {
                   "px-2 py-1 text-xs font-medium rounded-lg transition-colors",
                   activeSection === "experiences"
                     ? "bg-yellow-100 text-yellow-700"
-                    : "text-stone-500 hover:bg-yellow-100 hover:text-yellow-700",
+                    : "text-ink-muted hover:bg-yellow-100 hover:text-yellow-700",
                 )}
               >
                 Experiences
@@ -349,7 +353,7 @@ export function PlaygroundCanvas() {
                   "px-2 py-1 text-xs font-medium rounded-lg transition-colors",
                   activeSection === "certifications"
                     ? "bg-green-100 text-green-700"
-                    : "text-stone-500 hover:bg-green-100 hover:text-green-700",
+                    : "text-ink-muted hover:bg-green-100 hover:text-green-700",
                 )}
               >
                 Certifications
@@ -361,7 +365,7 @@ export function PlaygroundCanvas() {
                   "px-2 py-1 text-xs font-medium rounded-lg transition-colors",
                   activeSection === "photos"
                     ? "bg-purple-100 text-purple-700"
-                    : "text-stone-500 hover:bg-purple-100 hover:text-purple-700",
+                    : "text-ink-muted hover:bg-purple-100 hover:text-purple-700",
                 )}
               >
                 Photos

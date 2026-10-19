@@ -36,9 +36,9 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
             onMouseLeave={() => setIsHovered(false)}
         >
             <Link className="block group min-h-95" href={`/projects/${project.id}`}>
-                <div className="modern-card micro-tilt-card h-full transition-all duration-300 cursor-pointer group-hover:shadow-xl flex flex-col group overflow-hidden bg-white pb-4">
+                <div className="modern-card micro-tilt-card h-full transition-all duration-300 cursor-pointer group-hover:shadow-xl flex flex-col group overflow-hidden !bg-surface pb-4">
 
-                    <div className="relative mb-5 overflow-hidden rounded-none bg-gray-100 aspect-4/3 shrink-0 transition-transform duration-500 ease-out group-hover:scale-[1.02] micro-image">
+                    <div className="relative mb-5 overflow-hidden rounded-none bg-surface-muted aspect-4/3 shrink-0 transition-transform duration-500 ease-out group-hover:scale-[1.02] micro-image">
                         {[project.coverImage, ...project.images.map((img) => img.image)].map(
                             (image, index) => (
                                 <Image
@@ -65,13 +65,13 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
                         <div>
                             <h3 className="text-xl font-bold leading-tight mb-2 transition-colors duration-200 line-clamp-1 "
                                 style={{
-                                    color: isHovered ? project.accentColor : "#111827",
+                                    color: isHovered ? project.accentColor : "var(--card-title)",
                                 }}
                             >
                                 {project.title}
                             </h3>
 
-                            <p className="font-sans text-sm leading-relaxed text-gray-500 line-clamp-3 min-h-18">
+                            <p className="font-sans text-sm leading-relaxed text-ink-muted line-clamp-3 min-h-18">
                                 {project.subtitle}
                             </p>
                         </div>
@@ -79,7 +79,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
                         <div className="mt-4 flex items-center text-sm font-medium">
                             <span className="inline-block transition-colors duration-300 relative pb-[0.15em]"
                                 style={{
-                                    color: isHovered ? project.accentColor : "#4B5563",
+                                    color: isHovered ? project.accentColor : "var(--ink-muted)",
                                 }}
                             >
                                 <span className="flex items-center gap-2">

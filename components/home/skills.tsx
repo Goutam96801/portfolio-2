@@ -1,4 +1,5 @@
 import Image from "next/image"
+import type { CSSProperties } from "react"
 
 const mySkills = [
     {
@@ -85,7 +86,7 @@ export const MySkills = () => {
                     width={128}
                     height={128}
                     aria-hidden="true"
-                    className="mix-blend-multiply"
+                    className="mix-blend-multiply skilljar-bulb"
                 />
             </div>
             <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-16 text-center transition-all duration-500 delay-200 opacity-100 translate-y-0">
@@ -202,12 +203,12 @@ export const MySkills = () => {
                                         <div className="w-12 h-4 bg-yellow-100 opacity-80 rounded-sm shadow-sm border border-yellow-200 transform -rotate-12 group-hover:opacity-90" />
                                         <div className="absolute inset-0 w-12 h-4 bg-black opacity-5 rounded-sm transform translate-y-0.5 group-hover:translate-y-1 transition-all duration-300" />
                                     </div>
-                                    <div className="border border-[#E5E7EB] rounded-lg group-hover:rotate-0! w-36 h-36 md:w-44 md:h-44 lg:w-48 lg:h-48 text-xs md:text-sm lg:text-base font-bold text-center flex items-center justify-center hover:scale-[1.02] transition-all duration-200 cursor-default p-4 font-mono text-black relative peel-animate flex-col gap-4"
+                                    <div className="skill-note border border-[#E5E7EB] rounded-lg group-hover:rotate-0! w-36 h-36 md:w-44 md:h-44 lg:w-48 lg:h-48 text-xs md:text-sm lg:text-base font-bold text-center flex items-center justify-center hover:scale-[1.02] transition-all duration-200 cursor-default p-4 font-mono relative peel-animate flex-col gap-4"
                                     style={{
-                                            background:skill.color,
-                                            borderColor:`${skill.color}33`,
-                                            rotate:`${skill.id%2===0 ? '2deg' : '-2deg'}`
-                                        }}
+                                            ["--skill-color" as string]: skill.color,
+                                            borderColor: `${skill.color}33`,
+                                            rotate: `${skill.id % 2 === 0 ? "2deg" : "-2deg"}`,
+                                        } as CSSProperties}
                                         >
                                             <Image 
                                             src={skill.icon}

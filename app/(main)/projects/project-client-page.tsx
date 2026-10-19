@@ -38,14 +38,14 @@ const toolkit = [
     name: 'GitHub',
     role: 'Code & versioning',
     stripe: 'bg-orange-400',
-    iconBg: 'bg-white',
+    iconBg: 'bg-surface',
     icon: "icons/github.svg",
   },
   {
     name: 'Notion',
     role: 'Specs, notes & planning',
-    stripe: 'bg-neutral-300',
-    iconBg: 'bg-neutral-100',
+    stripe: 'bg-line/40',
+    iconBg: 'bg-surface-muted',
     icon: "icons/notion.svg",
   },
   {
@@ -118,13 +118,13 @@ export default function ProjectsClient() {
         <p className="text-xs uppercase tracking-[0.3em] font-bold text-orange-500 mb-6 opacity-0 animate-fadeInUp">
           Selected Works
         </p>
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-black leading-[1.05] mb-8 opacity-0 animate-fadeInUp">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-ink leading-[1.05] mb-8 opacity-0 animate-fadeInUp">
           Building products that feel native everywhere
         </h1>
-        <p className="text-base md:text-lg text-neutral-700 font-medium max-w-3xl mx-auto leading-relaxed mb-4 opacity-0 animate-fadeInUp">
+        <p className="text-base md:text-lg text-ink-soft font-medium max-w-3xl mx-auto leading-relaxed mb-4 opacity-0 animate-fadeInUp">
           A focused collection of full-stack products across web & mobile — spanning realtime collaboration, open-source tooling, and AI-powered experiences.
         </p>
-        <p className="text-sm uppercase tracking-[0.3em] font-bold text-neutral-700 opacity-0 animate-fadeInUp">
+        <p className="text-sm uppercase tracking-[0.3em] font-bold text-ink-soft opacity-0 animate-fadeInUp">
           {projects.length} scalable products crafted across web & mobile ecosystems
         </p>
       </section>
@@ -242,25 +242,25 @@ export default function ProjectsClient() {
           return (
             <article
               key={project.id}
-              className={`bg-white border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-6 md:p-8 lg:p-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-14 items-center opacity-0 animate-fadeInUp ${isReversed ? 'md:[&>*:first-child]:order-2' : ''
+              className={`bg-surface border-2 border-line shadow-[6px_6px_0px_0px_var(--shadow-solid)] p-6 md:p-8 lg:p-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-14 items-center opacity-0 animate-fadeInUp ${isReversed ? 'md:[&>*:first-child]:order-2' : ''
                 }`}
               style={{ animationDelay: `${idx * 90}ms` }}
             >
               {/* Text */}
               <div className="space-y-5">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black leading-[1.1]">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-ink leading-[1.1]">
                   {project.title}
                 </h2>
                 <p className="text-xs uppercase tracking-[0.25em] font-bold text-orange-500">
                   {meta?.categoryLabel ?? 'Featured Work'}
                 </p>
-                <p className="text-sm md:text-base text-neutral-700 font-medium leading-relaxed">
+                <p className="text-sm md:text-base text-ink-soft font-medium leading-relaxed">
                   {project.subtitle}
                 </p>
                 <div className="pt-2">
                   <Link
                     href={`/projects/${project.id}`}
-                    className="inline-flex items-center gap-2 bg-white border-2 border-black px-6 py-3 font-bold text-black hover:bg-orange-400 transition-all duration-150 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)]"
+                    className="inline-flex items-center gap-2 bg-surface border-2 border-line px-6 py-3 font-bold text-ink hover:bg-orange-400 transition-all duration-150 shadow-[3px_3px_0px_0px_var(--shadow-solid)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[0px_0px_0px_0px_var(--shadow-solid)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[0px_0px_0px_0px_var(--shadow-solid)]"
                     style={{ fontFamily: 'Sora, sans-serif' }}
                   >
                     Open Work
@@ -272,7 +272,7 @@ export default function ProjectsClient() {
               {/* Image */}
               <Link
                 href={`/projects/${project.id}`}
-                className="group relative aspect-video border-2 border-black overflow-hidden block"
+                className="group relative aspect-video border-2 border-line overflow-hidden block"
                 style={{ backgroundColor: `${project.accentColor}33` }}
               >
                 <Image
@@ -287,8 +287,8 @@ export default function ProjectsClient() {
         })}
 
         {projects.length === 0 && (
-          <div className="text-center py-16 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-            <p className="text-base font-bold text-neutral-700">
+          <div className="text-center py-16 border-2 border-line bg-surface shadow-[6px_6px_0px_0px_var(--shadow-solid)]">
+            <p className="text-base font-bold text-ink-soft">
               Nothing to show for now — coming soon.
             </p>
           </div>
@@ -300,10 +300,10 @@ export default function ProjectsClient() {
         <p className="text-xs uppercase tracking-[0.3em] font-bold text-orange-500 mb-4">
           Toolkit
         </p>
-        <h2 className="text-3xl md:text-5xl font-black text-black mb-5 leading-tight">
+        <h2 className="text-3xl md:text-5xl font-black text-ink mb-5 leading-tight">
           How I shape the work
         </h2>
-        <p className="text-base md:text-lg text-neutral-700 font-medium max-w-2xl mx-auto leading-relaxed mb-12">
+        <p className="text-base md:text-lg text-ink-soft font-medium max-w-2xl mx-auto leading-relaxed mb-12">
           A pragmatic stack for shipping — building, writing, exploring, and
           pairing with AI when the leverage is real.
         </p>
@@ -312,23 +312,23 @@ export default function ProjectsClient() {
           {toolkit.map((tool, idx) => (
             <div
               key={tool.name}
-              className="bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-6 hover:translate-x-1 hover:translate-y-1 hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 opacity-0 animate-fadeInUp"
+              className="bg-surface border-2 border-line shadow-[4px_4px_0px_0px_var(--shadow-solid)] p-6 hover:translate-x-1 hover:translate-y-1 hover:shadow-[0px_0px_0px_0px_var(--shadow-solid)] transition-all duration-200 opacity-0 animate-fadeInUp"
               style={{ animationDelay: `${idx * 70}ms` }}
             >
               <div className={`h-1.5 w-12 ${tool.stripe} mb-6`}></div>
               <div
-                className={`w-12 h-12 border-2 border-black flex items-center justify-center mb-5 ${tool.iconBg}`}
+                className={`w-12 h-12 border-2 border-line flex items-center justify-center mb-5 ${tool.iconBg}`}
               >
                 <Image
                   src={tool.icon}
                   width={28}
                   height={28}
                   alt={tool.name}
-                  className="w-6 h-6 text-black"
+                  className="w-6 h-6 text-ink"
                 />
               </div>
-              <h3 className="text-xl font-black text-black mb-1">{tool.name}</h3>
-              <p className="text-sm text-neutral-700 font-medium">
+              <h3 className="text-xl font-black text-ink mb-1">{tool.name}</h3>
+              <p className="text-sm text-ink-soft font-medium">
                 {tool.role}
               </p>
             </div>
@@ -338,16 +338,16 @@ export default function ProjectsClient() {
 
       {/* GitHub build rhythm */}
       <section className="mb-8">
-        <div className="bg-white border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] p-6 md:p-8 lg:p-10">
+        <div className="bg-surface border-2 border-line shadow-[6px_6px_0px_0px_var(--shadow-solid)] p-6 md:p-8 lg:p-10">
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-7">
             <div className="space-y-3 max-w-2xl">
               <p className="text-xs uppercase tracking-[0.3em] font-bold text-orange-500">
                 GitHub
               </p>
-              <h2 className="text-3xl md:text-4xl font-black text-black leading-tight">
+              <h2 className="text-3xl md:text-4xl font-black text-ink leading-tight">
                 Current build rhythm
               </h2>
-              <p className="text-sm md:text-base text-neutral-700 font-medium leading-relaxed">
+              <p className="text-sm md:text-base text-ink-soft font-medium leading-relaxed">
                 A live snapshot of recent coding consistency and output.
               </p>
             </div>
@@ -355,7 +355,7 @@ export default function ProjectsClient() {
               href="https://github.com/Goutam96801"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 self-start bg-orange-400 border-2 border-black px-5 py-3 font-bold text-black hover:bg-green-400 transition-all duration-150 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] whitespace-nowrap"
+              className="inline-flex items-center gap-2 self-start bg-orange-400 border-2 border-line px-5 py-3 font-bold text-ink hover:bg-green-400 transition-all duration-150 shadow-[3px_3px_0px_0px_var(--shadow-solid)] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[0px_0px_0px_0px_var(--shadow-solid)] whitespace-nowrap"
               style={{ fontFamily: 'Sora, sans-serif' }}
             >
               Visit @Goutam96801
@@ -371,14 +371,14 @@ export default function ProjectsClient() {
             />
           </div>
 
-          <div className="flex items-center justify-between flex-wrap gap-3 pt-5 mt-5 border-t-2 border-neutral-200">
-            <p className="text-xs uppercase tracking-[0.2em] font-bold text-neutral-700">
+          <div className="flex items-center justify-between flex-wrap gap-3 pt-5 mt-5 border-t-2 border-line/20">
+            <p className="text-xs uppercase tracking-[0.2em] font-bold text-ink-soft">
               Contribution graph
             </p>
-            <div className="flex items-center gap-2 text-xs font-bold text-neutral-700">
+            <div className="flex items-center gap-2 text-xs font-bold text-ink-soft">
               <span>Less</span>
               <span className="inline-flex gap-0.5">
-                <span className="w-3.5 h-3.5 bg-neutral-200 border border-neutral-300"></span>
+                <span className="w-3.5 h-3.5 bg-surface-muted border border-line/40"></span>
                 <span className="w-3.5 h-3.5 bg-green-200 border border-green-300"></span>
                 <span className="w-3.5 h-3.5 bg-green-400 border border-green-500"></span>
                 <span className="w-3.5 h-3.5 bg-green-600 border border-green-700"></span>
@@ -412,7 +412,7 @@ function GitHubContributionGraph({
             {Array.from({ length: 7 }).map((__, dayIndex) => (
               <span
                 key={dayIndex}
-                className="h-3 w-3 animate-pulse border border-neutral-300 bg-neutral-200 md:h-3.5 md:w-3.5"
+                className="h-3 w-3 animate-pulse border border-line/40 bg-surface-muted md:h-3.5 md:w-3.5"
               />
             ))}
           </div>
@@ -509,5 +509,5 @@ function getContributionClass(level: number) {
   if (level === 3) return 'border-green-700 bg-green-600';
   if (level === 2) return 'border-green-500 bg-green-400';
   if (level === 1) return 'border-green-300 bg-green-200';
-  return 'border-neutral-300 bg-neutral-200';
+  return 'border-line/40 bg-surface-muted';
 }

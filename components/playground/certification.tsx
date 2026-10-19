@@ -50,14 +50,14 @@ export const Certification = () => {
           </h2>
         </div>
       </div>
-      <div className="w-275 rounded-2xl border border-stone-200 bg-white/90 p-8 shadow-xl backdrop-blur-sm">
+      <div className="w-275 rounded-2xl border border-stone-200 bg-surface/90 p-8 shadow-xl backdrop-blur-sm">
 
 
         <div className="grid gap-6 grid-cols-3">
           {certificates.map((cert) => (
             <figure key={cert.id} className="space-y-3">
               <div
-                className="relative aspect-4/3 overflow-hidden rounded-lg border border-stone-200 bg-neutral-100 shadow-sm"
+                className="relative aspect-4/3 overflow-hidden rounded-lg border border-stone-200 bg-surface-muted shadow-sm"
               >
                 <Image
                   src={cert.image}

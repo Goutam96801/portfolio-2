@@ -84,7 +84,7 @@ const handleCopyLink = async () => {
     <div
       ref={menuRef}
       onClick={(e) => e.stopPropagation()}
-      className="fixed z-50 min-w-48 overflow-hidden border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+      className="fixed z-50 min-w-48 overflow-hidden border-2 border-line bg-surface shadow-[4px_4px_0px_0px_var(--shadow-solid)]"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
@@ -93,7 +93,7 @@ const handleCopyLink = async () => {
     >
       <button
         onClick={handleUpgradeCursor}
-        className="flex w-full items-center gap-3 px-4 py-3 text-sm font-medium text-black transition-colors hover:bg-yellow-200 "
+        className="flex w-full items-center gap-3 px-4 py-3 text-sm font-medium text-ink transition-colors hover:bg-yellow-200 "
       >
         <MousePointer2 size={18} strokeWidth={2} />
         <span>{cursorUpgraded ? "Default cursor" : "Upgrade cursor"}</span>
@@ -101,7 +101,7 @@ const handleCopyLink = async () => {
 
       <button
         onClick={handleMuteSounds}
-        className="flex w-full items-center gap-3 px-4 py-3 text-sm font-medium text-black transition-colors hover:bg-orange-400"
+        className="flex w-full items-center gap-3 px-4 py-3 text-sm font-medium text-ink transition-colors hover:bg-orange-400"
       >
         {
           isMuted ? <VolumeX size={18} strokeWidth={2} /> : <Volume2 size={18} strokeWidth={2} />
@@ -114,7 +114,7 @@ const handleCopyLink = async () => {
 
       <button
         onClick={handleReload}
-        className="flex w-full items-center gap-3 px-4 py-3 text-sm font-medium text-black transition-colors hover:bg-cyan-400 "
+        className="flex w-full items-center gap-3 px-4 py-3 text-sm font-medium text-ink transition-colors hover:bg-cyan-400 "
       >
         <RotateCcw size={18} strokeWidth={2} />
         <span>Reload page</span>
@@ -122,7 +122,7 @@ const handleCopyLink = async () => {
 
       <button
         onClick={handleGoBack}
-        className="flex w-full items-center gap-3 px-4 py-3 text-sm font-medium text-black transition-colors hover:bg-stone-400"
+        className="flex w-full items-center gap-3 px-4 py-3 text-sm font-medium text-ink transition-colors hover:bg-stone-400"
       >
         <ArrowLeft size={18} strokeWidth={2} />
         <span>Go back</span>
@@ -130,7 +130,7 @@ const handleCopyLink = async () => {
 
       <button
         onClick={handleCopyLink}
-        className="flex w-full items-center gap-3 px-4 py-3 text-sm font-medium text-black transition-colors hover:bg-green-400 "
+        className="flex w-full items-center gap-3 px-4 py-3 text-sm font-medium text-ink transition-colors hover:bg-green-400 "
       >
         {
           isLinkCopied ? <Check size={18} strokeWidth={2} /> : <Link size={18} strokeWidth={2} />

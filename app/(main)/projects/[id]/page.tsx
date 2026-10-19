@@ -54,7 +54,7 @@ const ProjectDetails = async ({ params }: Props) => {
       <div className="py-6 mb-8">
         <Link
           href="/projects"
-          className={`inline-flex items-center gap-2 text-gray-600 hover:text-black cursor-pointer transition-opacity duration-300`}>
+          className={`inline-flex items-center gap-2 text-ink-muted hover:text-ink cursor-pointer transition-opacity duration-300`}>
           <ArrowLeft size={18} />
           <span>Back to Projects</span>
         </Link>
@@ -68,20 +68,20 @@ const ProjectDetails = async ({ params }: Props) => {
           <h1 className="text-4xl md:text-6xl font-black mb-8 leading-tight opacity-0 animate-fadeInUp">
             {project.title}
           </h1>
-          <p className="text-lg md:text-xl text-gray-500 mb-8 max-w-4xl mx-auto leading-relaxed opacity-0 animate-fadeInUp">
+          <p className="text-lg md:text-xl text-ink-muted mb-8 max-w-4xl mx-auto leading-relaxed opacity-0 animate-fadeInUp">
             {project.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 opacity-0 animate-fadeInUp">
             {
               project.demo &&
-              <a href={project.demo} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 bg-orange-400 text-black px-8 py-4 rounded-none font-medium hover:bg-green-400 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+              <a href={project.demo} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 bg-orange-400 text-ink px-8 py-4 rounded-none font-medium hover:bg-green-400 transition-all duration-300 hover:scale-105 hover:shadow-lg">
                 <Play size={20} />
                 Demo Access
                 <ExternalLink size={18} />
               </a>
             }
 
-            <a href={project.sourceCode} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 border border-black px-8 py-4 rounded-none font-medium bg-white hover:bg-black text-black hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg">
+            <a href={project.sourceCode} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 border border-line px-8 py-4 rounded-none font-medium bg-surface hover:bg-ink text-ink hover:text-page transition-all duration-300 hover:scale-105 hover:shadow-lg">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4 group-hover:rotate-12 transition-transform duration-300">
                 <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
               </svg>
@@ -93,7 +93,7 @@ const ProjectDetails = async ({ params }: Props) => {
           {
             project.credentials && (
               <div
-                className="max-w-2xl mx-auto opacity-0 animate-fadeInUp border-2 border-black bg-[#faf6ef] p-6 md:p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
+                className="max-w-2xl mx-auto opacity-0 animate-fadeInUp border-2 border-line bg-page p-6 md:p-8 shadow-[6px_6px_0px_0px_var(--shadow-solid)]"
               >
                 <div className="flex items-center gap-3 mb-6">
                   <span className="inline-block w-10 h-1 bg-orange-400"></span>
@@ -108,7 +108,7 @@ const ProjectDetails = async ({ params }: Props) => {
         </div>
 
         {/* Cover Image */}
-        <div className="mb-16 md:mb-20 group relative overflow-hidden opacity-0 animate-fadeInUp aspect-video bg-neutral-100/40">
+        <div className="mb-16 md:mb-20 group relative overflow-hidden opacity-0 animate-fadeInUp aspect-video bg-surface-muted/40">
           <Image
             src={project.coverImage}
             alt={project.title}
@@ -127,7 +127,7 @@ const ProjectDetails = async ({ params }: Props) => {
             </h2>
           </div>
           <div
-            dangerouslySetInnerHTML={{ __html: project.description }}
+            className="project-richtext" dangerouslySetInnerHTML={{ __html: project.description }}
           />
         </section>
 
@@ -157,7 +157,7 @@ const ProjectDetails = async ({ params }: Props) => {
               >
                 {/* Image */}
                 <div
-                  className="group relative overflow-hidden aspect-video bg-neutral-100/60 border-2 border-black opacity-0 animate-fadeInUp"
+                  className="group relative overflow-hidden aspect-video bg-surface-muted/60 border-2 border-line opacity-0 animate-fadeInUp"
                   style={{ animationDelay: `${idx * 80}ms` }}
                 >
                   <Image
@@ -175,15 +175,15 @@ const ProjectDetails = async ({ params }: Props) => {
                   style={{ animationDelay: `${idx * 80 + 60}ms` }}
                 >
                   <span
-                    className="inline-block text-[11px] tracking-[0.18em] uppercase font-bold px-3 py-1.5 bg-orange-400 text-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                    className="inline-block text-[11px] tracking-[0.18em] uppercase font-bold px-3 py-1.5 bg-orange-400 text-ink border-2 border-line shadow-[2px_2px_0px_0px_var(--shadow-solid)]"
                   >
                     {img.label}
                   </span>
-                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-black leading-tight">
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-ink leading-tight">
                     {img.title}
                   </h3>
                   <div
-                    dangerouslySetInnerHTML={{ __html: img.description }}
+                    className="project-richtext" dangerouslySetInnerHTML={{ __html: img.description }}
                   />
                 </div>
               </div>
@@ -201,19 +201,19 @@ const ProjectDetails = async ({ params }: Props) => {
             </h2>
           </div>
 
-          <h3 className="text-3xl md:text-5xl font-black text-black mb-10 md:mb-12 max-w-3xl leading-tight">
+          <h3 className="text-3xl md:text-5xl font-black text-ink mb-10 md:mb-12 max-w-3xl leading-tight">
             Built with tools that earn their place.
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg- border-2 bg-[#faf6ef] border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg- border-2 bg-page border-line shadow-[6px_6px_0px_0px_var(--shadow-solid)]">
             {project.techStack.map((tech, idx) => (
               <div
                 key={tech.name}
-                className="bg-[#faf6ef] p-6 md:p-8 group hover:bg-orange-400 transition-colors duration-300 opacity-0 animate-fadeInUp"
+                className="bg-page p-6 md:p-8 group hover:bg-orange-400 transition-colors duration-300 opacity-0 animate-fadeInUp"
                 style={{ animationDelay: `${idx * 60}ms` }}
               >
                 <div className="flex items-start gap-5">
-                  <div className="shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-white border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-all duration-300">
+                  <div className="shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-surface border-2 border-line shadow-[3px_3px_0px_0px_var(--shadow-solid)] group-hover:shadow-[1px_1px_0px_0px_var(--shadow-solid)] group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-all duration-300">
                     <Image
                       src={tech.icon}
                       alt={tech.name}
@@ -224,14 +224,14 @@ const ProjectDetails = async ({ params }: Props) => {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-baseline justify-between gap-3 mb-1">
-                      <h4 className="text-lg md:text-xl font-black text-black truncate">
+                      <h4 className="text-lg md:text-xl font-black text-ink truncate">
                         {tech.name}
                       </h4>
                     </div>
-                    <p className="text-[11px] uppercase tracking-[0.18em] font-bold mb-3 text-orange-500 group-hover:text-black transition-colors duration-300">
+                    <p className="text-[11px] uppercase tracking-[0.18em] font-bold mb-3 text-orange-500 group-hover:text-ink transition-colors duration-300">
                       {tech.role}
                     </p>
-                    <p className="text-sm text-neutral-700 font-medium leading-relaxed group-hover:text-black transition-colors duration-300">
+                    <p className="text-sm text-neutral-700 font-medium leading-relaxed group-hover:text-ink transition-colors duration-300">
                       {tech.description}
                     </p>
                   </div>

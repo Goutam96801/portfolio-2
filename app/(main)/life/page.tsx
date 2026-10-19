@@ -1,5 +1,3 @@
-
-
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -21,7 +19,7 @@ export default function Life() {
           aria-hidden="true"
           width={112}
           height={112}
-          className="size-28 mix-blend-multiply"
+          className="size-28 mix-blend-multiply dark:mix-blend-normal dark:invert dark:brightness-110 dark:opacity-80"
         />
       </div>
 
@@ -32,7 +30,7 @@ export default function Life() {
           aria-hidden="true"
           width={128}
           height={128}
-          className="size-32 mix-blend-multiply"
+          className="size-32 mix-blend-multiply dark:mix-blend-normal dark:invert dark:brightness-110 dark:opacity-80"
         />
       </div>
 
@@ -40,14 +38,14 @@ export default function Life() {
       <section className="pb-4 pt-10 md:pt-16">
         <div className="mx-auto max-w-2xl px-6 text-center md:px-4">
           <p
-            className="text-[11px] uppercase tracking-[0.35em] text-zinc-400 opacity-0 animate-fadeInUp"
+            className="text-[11px] uppercase tracking-[0.35em] text-ink-muted opacity-0 animate-fadeInUp"
             style={{ opacity: 1, transform: 'none' }}
           >
             A personal note
           </p>
 
           <h1
-            className="mt-6 font-handwritten text-5xl leading-[1.15] text-zinc-900 md:text-6xl lg:text-7xl opacity-0 animate-fadeInUp"
+            className="mt-6 font-handwritten text-5xl leading-[1.15] text-ink md:text-6xl lg:text-7xl opacity-0 animate-fadeInUp"
             style={{ opacity: 1, transform: 'none' }}
           >
             Life, beyond
@@ -56,7 +54,7 @@ export default function Life() {
           </h1>
 
           <p
-            className="mx-auto mt-6 max-w-md text-[15px] leading-relaxed text-zinc-500 md:text-base opacity-0 animate-fadeInUp"
+            className="mx-auto mt-6 max-w-md text-[15px] leading-relaxed text-ink-muted md:text-base opacity-0 animate-fadeInUp"
             style={{ opacity: 1, transform: 'none' }}
           >
             Not a résumé. Not a timeline. Just the story underneath the work.
@@ -72,7 +70,7 @@ export default function Life() {
               aria-hidden="true"
               width={224}
               height={40}
-              className="mx-auto w-48 opacity-30 md:w-56"
+              className="mx-auto w-48 opacity-30 md:w-56 dark:invert dark:opacity-40"
             />
           </div>
         </div>
@@ -88,7 +86,7 @@ export default function Life() {
             aria-hidden="true"
             width={96}
             height={96}
-            className="size-24 mix-blend-multiply"
+            className="size-24 mix-blend-multiply skilljar-bulb"
           />
         </div>
 
@@ -97,24 +95,24 @@ export default function Life() {
           className="mb-14 flex justify-center opacity-0 animate-fadeInUp"
           style={{ opacity: 1, transform: 'none' }}
         >
-          <div className="rotate-2 bg-white p-2.5 shadow-[0_2px_20px_rgba(0,0,0,0.08)] transition-transform duration-500 hover:rotate-0">
+          <div className="rotate-2 bg-surface border border-line/15 p-2.5 shadow-[0_2px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_2px_24px_rgba(0,0,0,0.45)] transition-transform duration-500 hover:rotate-0">
             <Image
-              src="/gallary/profile.jpeg"
+              src="/gallary/profile.png"
               alt="Goutam Choudhary"
               width={208}
               height={256}
               priority
-              className="h-56 w-44 object-cover md:h-64 md:w-52"
+              className="h-56 w-44 object-cover md:h-64 md:w-52 "
             />
 
-            <p className="mt-1.5 text-center font-handwritten text-[11px] text-zinc-400">
+            {/* <p className="mt-1.5 text-center font-handwritten text-[11px] text-ink-muted">
               Convocation is pending ⏳
-            </p>
+            </p> */}
           </div>
         </div>
 
         {/* Paragraphs */}
-        <div className="space-y-6 text-left text-[15px] leading-[1.85] text-zinc-700 sm:text-justify md:text-base md:leading-[1.9]">
+        <div className="space-y-6 text-left text-[15px] leading-[1.85] text-ink-soft sm:text-justify md:text-base md:leading-[1.9]">
           <p style={{ opacity: 1, transform: 'none' }}>
             Hey, thanks for being here.
           </p>
@@ -135,7 +133,7 @@ export default function Life() {
         </div>
 
         <div className="my-14 flex items-center justify-center gap-4 md:my-16">
-          <span className="h-px w-16 bg-zinc-300/60" />
+          <span className="h-px w-16 bg-line/25" />
 
           <Image
             src="/shared/stamp-star.svg"
@@ -143,10 +141,10 @@ export default function Life() {
             aria-hidden="true"
             width={20}
             height={20}
-            className="size-5 opacity-40"
+            className="size-5 opacity-40 dark:invert dark:opacity-50"
           />
 
-          <span className="h-px w-16 bg-zinc-300/60" />
+          <span className="h-px w-16 bg-line/25" />
         </div>
         <div className="relative">
           <div className="absolute -left-40 top-4 opacity-50 hidden lg:block transform rotate-6">
@@ -156,10 +154,10 @@ export default function Life() {
               aria-hidden="true"
               width={96}
               height={96}
-              className="size-24 mix-blend-multiply"
+              className="size-24 mix-blend-multiply dark:mix-blend-normal dark:invert dark:brightness-110 dark:opacity-80"
             />
           </div>
-          <div className="space-y-6 text-left text-[15px] leading-[1.85] text-zinc-700 sm:text-justify md:text-base md:leading-[1.9]">
+          <div className="space-y-6 text-left text-[15px] leading-[1.85] text-ink-soft sm:text-justify md:text-base md:leading-[1.9]">
             <p style={{ opacity: 1, transform: 'none' }}>
               During college, watching others get placed through campus while I kept
               struggling was mentally exhausting. I constantly questioned myself and my
@@ -177,7 +175,7 @@ export default function Life() {
           </div>
         </div>
         <div className="my-14 flex items-center justify-center gap-4 md:my-16">
-          <span className="h-px w-16 bg-zinc-300/60" />
+          <span className="h-px w-16 bg-line/25" />
 
           <Image
             src="/shared/stamp-star.svg"
@@ -185,13 +183,13 @@ export default function Life() {
             aria-hidden="true"
             width={20}
             height={20}
-            className="size-5 opacity-40"
+            className="size-5 opacity-40 dark:invert dark:opacity-50"
           />
 
-          <span className="h-px w-16 bg-zinc-300/60" />
+          <span className="h-px w-16 bg-line/25" />
         </div>
 
-        <div className="space-y-6 text-left text-[15px] leading-[1.85] text-zinc-700 sm:text-justify md:text-base md:leading-[1.9]">
+        <div className="space-y-6 text-left text-[15px] leading-[1.85] text-ink-soft sm:text-justify md:text-base md:leading-[1.9]">
           <p style={{ opacity: 1, transform: 'none' }}>
             After months of hard work and consistently pushing myself, I received a
             full-time opportunity in the same company. I tried giving more than what was
@@ -205,27 +203,27 @@ export default function Life() {
             concepts into polished products with far better execution.
           </p>
 
-          <p className="pt-6 text-center font-handwritten text-xl text-zinc-500" style={{ opacity: 1, transform: 'none' }}>Goutam</p>
+          <p className="pt-6 text-center font-handwritten text-xl text-ink-muted" style={{ opacity: 1, transform: 'none' }}>Goutam</p>
         </div>
         {/* Footer CTA */}
         <div
-          className="mt-20 flex flex-col items-center gap-3 border-t border-zinc-200 pt-10 sm:flex-row sm:justify-between"
+          className="mt-20 flex flex-col items-center gap-3 border-t border-line/20 pt-10 sm:flex-row sm:justify-between"
           style={{ opacity: 1, transform: 'none' }}
         >
-          <p className="text-[11px] uppercase tracking-[0.3em] text-zinc-400">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-ink-muted">
             Explore other sections
           </p>
 
           <div className="flex gap-3">
             <Link
               href="/projects"
-              className="rounded-full border border-zinc-300 px-5 py-2 text-sm font-semibold text-zinc-500 transition-colors hover:border-zinc-900 hover:text-zinc-900"
+              className="rounded-full border border-line/40 px-5 py-2 text-sm font-semibold text-ink-muted transition-colors hover:border-ink hover:text-ink"
             >
               Projects
             </Link>
             <Link
               href="/playground"
-              className="rounded-full border border-zinc-900 px-5 py-2 text-sm font-semibold text-zinc-900 transition-colors hover:bg-zinc-900 hover:text-white"
+              className="rounded-full border border-ink px-5 py-2 text-sm font-semibold text-ink transition-colors hover:bg-ink hover:text-page"
             >
               Play
             </Link>

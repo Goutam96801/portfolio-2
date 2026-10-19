@@ -31,13 +31,13 @@ export default function DemoCredentials({
     return (
         <div className="flex flex-col sm:flex-row items-stretch gap-3 w-full min-w-0">
             {/* Provider */}
-            <div className="flex items-center justify-between gap-3 bg-white border border-gray-200 px-4 py-2 shadow-sm flex-1 min-w-0 overflow-hidden">
+            <div className="flex items-center justify-between gap-3 bg-surface border border-gray-200 px-4 py-2 shadow-sm flex-1 min-w-0 overflow-hidden">
                 <div className="flex items-center gap-2 min-w-0 overflow-hidden">
-                    <span className="text-sm text-gray-500 shrink-0">
+                    <span className="text-sm text-ink-muted shrink-0">
                         Provider:
                     </span>
 
-                    <span className="font-mono text-sm font-medium text-black truncate block">
+                    <span className="font-mono text-sm font-medium text-ink truncate block">
                         {provider}
                     </span>
                 </div>
@@ -52,13 +52,13 @@ export default function DemoCredentials({
             </div>
 
             {/* Password */}
-            <div className="flex items-center justify-between gap-3 bg-white border border-gray-200 px-4 py-2 shadow-sm flex-1 min-w-0 overflow-hidden">
+            <div className="flex items-center justify-between gap-3 bg-surface border border-gray-200 px-4 py-2 shadow-sm flex-1 min-w-0 overflow-hidden">
                 <div className="flex items-center gap-2 min-w-0 overflow-hidden">
-                    <span className="text-sm text-gray-500 shrink-0">
+                    <span className="text-sm text-ink-muted shrink-0">
                         Password:
                     </span>
 
-                    <span className="font-mono text-sm font-medium text-black truncate block">
+                    <span className="font-mono text-sm font-medium text-ink truncate block">
                         ***************
                     </span>
                 </div>
