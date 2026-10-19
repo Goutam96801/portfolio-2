@@ -14,7 +14,7 @@ export const BestProjects = () => {
                     width={128}
                     height={128}
                     aria-hidden="true"
-                    className="mix-blend-multiply"
+                    className="mix-blend-multiply dark:invert"
                 />
             </div>
             <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-16 text-center transition-all duration-500 delay-200 opacity-100 translate-y-0">
@@ -137,7 +137,7 @@ export const BestProjects = () => {
                     </div>
                     <div className="text-center mt-12 md:mt-16 px-4">
                         <Link
-                            className="daisy-button bg-orange-400 hover:bg-white duration-300 trnasform-all text-sm md:text-base px-6 md:px-8 py-3 md:py-4 inline-block border-2 font-semibold border-black"
+                            className="daisy-button bg-orange-400 hover:bg-surface duration-300 trnasform-all text-sm md:text-base px-6 md:px-8 py-3 md:py-4 inline-block border-2 font-semibold border-line"
                             href="/projects"
                         >
                             VIEW ALL PROJECTS

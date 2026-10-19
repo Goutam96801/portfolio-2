@@ -48,7 +48,7 @@ export default function ProjectImageGallery({
       </div>
 
       <div
-        className="relative border-2 border-black bg-neutral-100/60 overflow-hidden shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
+        className="relative border-2 border-line bg-surface-muted/60 overflow-hidden shadow-[6px_6px_0px_0px_var(--shadow-solid)]"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
         onFocusCapture={() => setPaused(true)}
@@ -85,7 +85,7 @@ export default function ProjectImageGallery({
               type="button"
               aria-label="Previous gallery image"
               onClick={() => goTo(index - 1)}
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:bg-orange-400 transition-colors"
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-surface border-2 border-line shadow-[3px_3px_0px_0px_var(--shadow-solid)] hover:bg-orange-400 transition-colors"
             >
               <ChevronLeft size={18} />
             </button>
@@ -93,7 +93,7 @@ export default function ProjectImageGallery({
               type="button"
               aria-label="Next gallery image"
               onClick={() => goTo(index + 1)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:bg-orange-400 transition-colors"
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-surface border-2 border-line shadow-[3px_3px_0px_0px_var(--shadow-solid)] hover:bg-orange-400 transition-colors"
             >
               <ChevronRight size={18} />
             </button>
@@ -106,10 +106,10 @@ export default function ProjectImageGallery({
                   aria-label={`Show gallery image ${i + 1}`}
                   aria-current={i === index}
                   onClick={() => setIndex(i)}
-                  className={`h-2.5 border-2 border-black transition-all ${
+                  className={`h-2.5 border-2 border-line transition-all ${
                     i === index
                       ? 'w-7 bg-orange-400'
-                      : 'w-2.5 bg-white hover:bg-neutral-200'
+                      : 'w-2.5 bg-surface hover:bg-neutral-200'
                   }`}
                 />
               ))}

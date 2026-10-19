@@ -76,7 +76,7 @@ export const Experiences = () => {
         </div>
       </div>
 
-      <div className="w-full max-w-2xl rounded-2xl border border-stone-200 bg-white/90 p-8 shadow-xl backdrop-blur-sm">
+      <div className="w-full max-w-2xl rounded-2xl border border-stone-200 bg-surface/90 p-8 shadow-xl backdrop-blur-sm">
         <div className="flex gap-6 relative">
           {/* Left: Timeline and Company Info */}
           <div className="flex flex-col items-center ">
