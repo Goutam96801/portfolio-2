@@ -46,23 +46,26 @@ export default function InitialLoader({ name, onExitStart, onComplete }: Initial
   return (
     <div
       id="initial-loader"
-      className={`notranslate${isExiting ? ' initial-loader-exit' : ''}`}
+      className={`notranslate bg-page text-ink${isExiting ? ' initial-loader-exit' : ''}`}
       lang="en-US"
       translate="no"
       aria-hidden="true"
     >
-      <div id="initial-loader-shell">
-        <div id="initial-loader-stage" className="notranslate" lang="en-US" translate="no">
-          {Array.from(name).map((character, index) => (
-            <span
-              key={`${character}-${index}`}
-              className="initial-loader-letter"
-              aria-hidden={index >= visibleCharacters}
-            >
-              {index < visibleCharacters ? character : '\u00A0'}
-            </span>
-          ))}
-        </div>
+      <div
+        id="initial-loader-stage"
+        className="notranslate text-ink"
+        lang="en-US"
+        translate="no"
+      >
+        {Array.from(name).map((character, index) => (
+          <span
+            key={`${character}-${index}`}
+            className="initial-loader-letter"
+            aria-hidden={index >= visibleCharacters}
+          >
+            {index < visibleCharacters ? character : '\u00A0'}
+          </span>
+        ))}
       </div>
     </div>
   );
